@@ -1,0 +1,3 @@
+/Users/samuelschulthies/CLionProjects/cs455/rayTracer/cmake-build-debug/CMakeFiles/rayTracer.dir
+/Users/samuelschulthies/CLionProjects/cs455/rayTracer/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/samuelschulthies/CLionProjects/cs455/rayTracer/cmake-build-debug/CMakeFiles/rebuild_cache.dir
