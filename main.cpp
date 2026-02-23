@@ -1,3 +1,6 @@
+#include "vec3.h"
+#include "color.h"
+
 #include <iostream>
 
 using namespace std;
@@ -13,19 +16,10 @@ int main() {
     for (int i = 0; i < imageHeight; i++){
         clog << "\rScanLines remaining: " << (imageHeight - i) << ' ' << flush;
         for (int j = 0; j < imageWidth; j++){
-            auto r = double(i) / (imageWidth - 1);
-            auto g = double(j) / (imageHeight - 1);
-            auto b = 1.0;
-
-            int ir = int(255.999 * r);
-            int ig = int(255.999 * g);
-            int ib = int(255.999 * b);
-
-            cout << ir << ' ' << ig << ' ' << ib << "\n";
+            auto pixel_color = color(double(i) / (imageWidth - 1), double(j) / (imageHeight - 1), 0);
+            write_color(cout, pixel_color);
         }
     }
 
     clog << "\rDone.                   \n";
-
-
 }
