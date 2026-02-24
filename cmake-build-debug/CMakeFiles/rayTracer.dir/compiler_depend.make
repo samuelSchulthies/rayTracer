@@ -959,6 +959,7 @@ CMakeFiles/rayTracer.dir/main.cpp.o: /Users/samuelschulthies/CLionProjects/cs455
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/color.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h
 
 
@@ -1439,6 +1440,8 @@ CMakeFiles/rayTracer.dir/main.cpp.o: /Users/samuelschulthies/CLionProjects/cs455
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__ranges/ref_view.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__system_error/error_code.h:
+
+/Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/xlocale/_string.h:
 
