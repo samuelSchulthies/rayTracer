@@ -16,7 +16,7 @@ int main() {
     for (int i = 0; i < imageHeight; i++){
         clog << "\rScanLines remaining: " << (imageHeight - i) << ' ' << flush;
         for (int j = 0; j < imageWidth; j++){
-            auto pixel_color = color(double(i) / (imageWidth - 1), double(j) / (imageHeight - 1), 0);
+            auto pixel_color = color(double(i) / (imageWidth - 1), double(j) / (imageHeight - 1), 1);
             write_color(cout, pixel_color);
         }
     }
