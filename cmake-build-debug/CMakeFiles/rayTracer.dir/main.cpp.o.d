@@ -958,4 +958,5 @@ CMakeFiles/rayTracer.dir/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/print \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/unistd.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/color.h \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h

@@ -960,10 +960,13 @@ CMakeFiles/rayTracer.dir/main.cpp.o: /Users/samuelschulthies/CLionProjects/cs455
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/color.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h
 
 
 /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h:
+
+/Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h:
 
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h:
 
