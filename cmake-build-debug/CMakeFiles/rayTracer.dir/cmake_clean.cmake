@@ -1,6 +1,16 @@
 file(REMOVE_RECURSE
   "CMakeFiles/rayTracer.dir/main.cpp.o"
   "CMakeFiles/rayTracer.dir/main.cpp.o.d"
+  "CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o"
+  "CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o.d"
+  "CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o"
+  "CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o.d"
+  "CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o"
+  "CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o.d"
+  "CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o"
+  "CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o.d"
+  "CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o"
+  "CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o.d"
   "rayTracer"
   "rayTracer.pdb"
 )

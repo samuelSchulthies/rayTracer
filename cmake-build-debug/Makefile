@@ -153,6 +153,126 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+scenes/fushigi.o: scenes/fushigi.cpp.o
+.PHONY : scenes/fushigi.o
+
+# target to build an object file
+scenes/fushigi.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o
+.PHONY : scenes/fushigi.cpp.o
+
+scenes/fushigi.i: scenes/fushigi.cpp.i
+.PHONY : scenes/fushigi.i
+
+# target to preprocess a source file
+scenes/fushigi.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.i
+.PHONY : scenes/fushigi.cpp.i
+
+scenes/fushigi.s: scenes/fushigi.cpp.s
+.PHONY : scenes/fushigi.s
+
+# target to generate assembly for a file
+scenes/fushigi.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.s
+.PHONY : scenes/fushigi.cpp.s
+
+scenes/magentaSphere.o: scenes/magentaSphere.cpp.o
+.PHONY : scenes/magentaSphere.o
+
+# target to build an object file
+scenes/magentaSphere.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o
+.PHONY : scenes/magentaSphere.cpp.o
+
+scenes/magentaSphere.i: scenes/magentaSphere.cpp.i
+.PHONY : scenes/magentaSphere.i
+
+# target to preprocess a source file
+scenes/magentaSphere.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.i
+.PHONY : scenes/magentaSphere.cpp.i
+
+scenes/magentaSphere.s: scenes/magentaSphere.cpp.s
+.PHONY : scenes/magentaSphere.s
+
+# target to generate assembly for a file
+scenes/magentaSphere.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.s
+.PHONY : scenes/magentaSphere.cpp.s
+
+scenes/penetration.o: scenes/penetration.cpp.o
+.PHONY : scenes/penetration.o
+
+# target to build an object file
+scenes/penetration.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o
+.PHONY : scenes/penetration.cpp.o
+
+scenes/penetration.i: scenes/penetration.cpp.i
+.PHONY : scenes/penetration.i
+
+# target to preprocess a source file
+scenes/penetration.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/penetration.cpp.i
+.PHONY : scenes/penetration.cpp.i
+
+scenes/penetration.s: scenes/penetration.cpp.s
+.PHONY : scenes/penetration.s
+
+# target to generate assembly for a file
+scenes/penetration.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/penetration.cpp.s
+.PHONY : scenes/penetration.cpp.s
+
+scenes/spiralSpheres.o: scenes/spiralSpheres.cpp.o
+.PHONY : scenes/spiralSpheres.o
+
+# target to build an object file
+scenes/spiralSpheres.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o
+.PHONY : scenes/spiralSpheres.cpp.o
+
+scenes/spiralSpheres.i: scenes/spiralSpheres.cpp.i
+.PHONY : scenes/spiralSpheres.i
+
+# target to preprocess a source file
+scenes/spiralSpheres.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.i
+.PHONY : scenes/spiralSpheres.cpp.i
+
+scenes/spiralSpheres.s: scenes/spiralSpheres.cpp.s
+.PHONY : scenes/spiralSpheres.s
+
+# target to generate assembly for a file
+scenes/spiralSpheres.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.s
+.PHONY : scenes/spiralSpheres.cpp.s
+
+scenes/threeSpheres.o: scenes/threeSpheres.cpp.o
+.PHONY : scenes/threeSpheres.o
+
+# target to build an object file
+scenes/threeSpheres.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o
+.PHONY : scenes/threeSpheres.cpp.o
+
+scenes/threeSpheres.i: scenes/threeSpheres.cpp.i
+.PHONY : scenes/threeSpheres.i
+
+# target to preprocess a source file
+scenes/threeSpheres.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.i
+.PHONY : scenes/threeSpheres.cpp.i
+
+scenes/threeSpheres.s: scenes/threeSpheres.cpp.s
+.PHONY : scenes/threeSpheres.s
+
+# target to generate assembly for a file
+scenes/threeSpheres.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.s
+.PHONY : scenes/threeSpheres.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -165,6 +285,21 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... scenes/fushigi.o"
+	@echo "... scenes/fushigi.i"
+	@echo "... scenes/fushigi.s"
+	@echo "... scenes/magentaSphere.o"
+	@echo "... scenes/magentaSphere.i"
+	@echo "... scenes/magentaSphere.s"
+	@echo "... scenes/penetration.o"
+	@echo "... scenes/penetration.i"
+	@echo "... scenes/penetration.s"
+	@echo "... scenes/spiralSpheres.o"
+	@echo "... scenes/spiralSpheres.i"
+	@echo "... scenes/spiralSpheres.s"
+	@echo "... scenes/threeSpheres.o"
+	@echo "... scenes/threeSpheres.i"
+	@echo "... scenes/threeSpheres.s"
 .PHONY : help
 
 

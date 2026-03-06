@@ -1,6 +1,8 @@
-CMakeFiles/rayTracer.dir/main.cpp.o: \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/main.cpp \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h \
+CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o: \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/magentaSphere.cpp \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/scene.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../sphere.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../vec3.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/cmath \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__assert \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__assertion_handler \
@@ -956,9 +958,4 @@ CMakeFiles/rayTracer.dir/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/formatter_string.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/formatter_tuple.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/print \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/unistd.h \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/color.h \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/scene.h \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../sphere.h
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/unistd.h

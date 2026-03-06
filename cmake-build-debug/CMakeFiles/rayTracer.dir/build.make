@@ -83,17 +83,97 @@ CMakeFiles/rayTracer.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rayTracer.dir/main.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuelschulthies/CLionProjects/cs455/rayTracer/main.cpp -o CMakeFiles/rayTracer.dir/main.cpp.s
 
+CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o: CMakeFiles/rayTracer.dir/flags.make
+CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o: /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/fushigi.cpp
+CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o: CMakeFiles/rayTracer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samuelschulthies/CLionProjects/cs455/rayTracer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o -MF CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o.d -o CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o -c /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/fushigi.cpp
+
+CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/fushigi.cpp > CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.i
+
+CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/fushigi.cpp -o CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.s
+
+CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o: CMakeFiles/rayTracer.dir/flags.make
+CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o: /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/magentaSphere.cpp
+CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o: CMakeFiles/rayTracer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samuelschulthies/CLionProjects/cs455/rayTracer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o -MF CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o.d -o CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o -c /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/magentaSphere.cpp
+
+CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/magentaSphere.cpp > CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.i
+
+CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/magentaSphere.cpp -o CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.s
+
+CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o: CMakeFiles/rayTracer.dir/flags.make
+CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o: /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/penetration.cpp
+CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o: CMakeFiles/rayTracer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samuelschulthies/CLionProjects/cs455/rayTracer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o -MF CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o.d -o CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o -c /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/penetration.cpp
+
+CMakeFiles/rayTracer.dir/scenes/penetration.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rayTracer.dir/scenes/penetration.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/penetration.cpp > CMakeFiles/rayTracer.dir/scenes/penetration.cpp.i
+
+CMakeFiles/rayTracer.dir/scenes/penetration.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rayTracer.dir/scenes/penetration.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/penetration.cpp -o CMakeFiles/rayTracer.dir/scenes/penetration.cpp.s
+
+CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o: CMakeFiles/rayTracer.dir/flags.make
+CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o: /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/spiralSpheres.cpp
+CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o: CMakeFiles/rayTracer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samuelschulthies/CLionProjects/cs455/rayTracer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o -MF CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o.d -o CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o -c /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/spiralSpheres.cpp
+
+CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/spiralSpheres.cpp > CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.i
+
+CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/spiralSpheres.cpp -o CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.s
+
+CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o: CMakeFiles/rayTracer.dir/flags.make
+CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o: /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/threeSpheres.cpp
+CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o: CMakeFiles/rayTracer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samuelschulthies/CLionProjects/cs455/rayTracer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o -MF CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o.d -o CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o -c /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/threeSpheres.cpp
+
+CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/threeSpheres.cpp > CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.i
+
+CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/threeSpheres.cpp -o CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.s
+
 # Object files for target rayTracer
 rayTracer_OBJECTS = \
-"CMakeFiles/rayTracer.dir/main.cpp.o"
+"CMakeFiles/rayTracer.dir/main.cpp.o" \
+"CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o" \
+"CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o" \
+"CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o" \
+"CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o" \
+"CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o"
 
 # External object files for target rayTracer
 rayTracer_EXTERNAL_OBJECTS =
 
 rayTracer: CMakeFiles/rayTracer.dir/main.cpp.o
+rayTracer: CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o
+rayTracer: CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o
+rayTracer: CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o
+rayTracer: CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o
+rayTracer: CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o
 rayTracer: CMakeFiles/rayTracer.dir/build.make
 rayTracer: CMakeFiles/rayTracer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/samuelschulthies/CLionProjects/cs455/rayTracer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable rayTracer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/samuelschulthies/CLionProjects/cs455/rayTracer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable rayTracer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rayTracer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
