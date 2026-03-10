@@ -48,4 +48,5 @@ public:
 
 
 scene magentaSphere();
-vector<sphere> threeSpheres();
+scene threeSpheres();
+scene spiralSpheres();

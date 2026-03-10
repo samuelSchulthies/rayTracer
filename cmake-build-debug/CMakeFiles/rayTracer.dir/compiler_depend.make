@@ -2888,7 +2888,8 @@ CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o: /Users/samuelschulthies/CLi
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/scene.h
 
 CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o: /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/threeSpheres.cpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/Availability.h \
@@ -3848,7 +3849,8 @@ CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o: /Users/samuelschulthies/CLio
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/scene.h
 
 
 /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/penetration.cpp:

@@ -2894,6 +2894,7 @@ CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h
  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h
+ /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/scene.h
 
 CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o
  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/threeSpheres.cpp
@@ -3855,4 +3856,5 @@ CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o
  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h
  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h
  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h
+ /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/scene.h
 

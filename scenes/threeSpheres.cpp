@@ -1,6 +1,6 @@
-#include "../sphere.h"
+#include "scene.h"
 
-vector<sphere> threeSpheres() {
+scene threeSpheres() {
     sphere whiteSphere({0.45, 0.0, -0.15},
                        0.15,
                        0.8,
@@ -17,7 +17,7 @@ vector<sphere> threeSpheres() {
                      {1.0, 0.0, 0.0},
                      {1.0, 1.0, 1.0},
                      32.0);
-    sphere greenSphere({-0.6, 0.0, 0.0},
+    sphere greenSphere({-0.60, 0.0, 0.0},
                        0.3,
                        0.7,
                        0.2,
@@ -34,5 +34,15 @@ vector<sphere> threeSpheres() {
                       {1.0, 1.0, 1.0},
                       16.0);
 
-    return vector<sphere>{whiteSphere, redSphere, greenSphere, blueSphere};
+    return scene(1.0,
+                 vec3(0, 0, 0),
+                 vec3(0,0,0),
+                 vec3(0, 1, 0),
+
+                 vec3(1, 1, 1),
+                 vec3(1.0, 1.0, 1.0),
+                 vec3(0.1, 0.1, 0.1),
+                 vec3(0.2, 0.2, 0.2),
+
+                 vector<sphere>{whiteSphere, redSphere, greenSphere, blueSphere});
 }

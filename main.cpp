@@ -9,7 +9,7 @@
 
 using namespace std;
 
-scene scene = magentaSphere();
+scene scene = threeSpheres();
 
 vec3 computePhong(sphere sphere, ray ray, double t);
 
@@ -58,6 +58,7 @@ color ray_color(const ray& ray) {
 vec3 computePhong(sphere sphere, ray ray, double t){
 
     vec3 normal = unit_vector(ray.at(t) - sphere.getCenter());
+    vec3 directionToCamera = unit_vector(ray.origin() - ray.at(t));
 
     // uncomment to check normals
     // return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);
@@ -67,7 +68,7 @@ vec3 computePhong(sphere sphere, ray ray, double t){
 
     vec3 ambient = sphere.getKa() * scene.ambientLight * sphere.getOd();
     vec3 diffuse = sphere.getKd() * scene.lightColor * sphere.getOd() * n_dot_l;
-    vec3 specular = sphere.getKs() * scene.lightColor * sphere.getOs() * (pow(max(dot(ray.origin(), reflection), 0.0), sphere.getKgls()));
+    vec3 specular = sphere.getKs() * scene.lightColor * sphere.getOs() * (pow(max(dot(directionToCamera, reflection), 0.0), sphere.getKgls()));
 
     vec3 lightTotal = ambient + diffuse + specular;
 

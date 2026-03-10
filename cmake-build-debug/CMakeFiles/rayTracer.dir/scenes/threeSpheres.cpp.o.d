@@ -1,5 +1,6 @@
 CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o: \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/threeSpheres.cpp \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/scene.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../sphere.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../vec3.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/cmath \

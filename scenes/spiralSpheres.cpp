@@ -1,6 +1,6 @@
-#include "../sphere.h"
+#include "scene.h"
 
-vector<sphere> spiralSpheres(){
+scene spiralSpheres(){
     vector<sphere> spheres;
     double x = 0.0;
     double y = 0.0;
@@ -28,5 +28,15 @@ vector<sphere> spiralSpheres(){
         g += 0.05;
         b -= 0.05;
     }
-    return spheres;
+    return scene(1.0,
+                 vec3(0, 0, 0),
+                 vec3(0,0,0),
+                 vec3(0, 1, 0),
+
+                 vec3(1.0, 1.0, 1.0),
+                 vec3(1.0, 1.0, 1.0),
+                 vec3(0.1, 0.1, 0.1),
+                 vec3(0.2, 0.2, 0.2),
+
+                 spheres);
 }
