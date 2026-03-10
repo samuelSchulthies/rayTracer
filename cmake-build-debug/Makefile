@@ -129,6 +129,30 @@ rayTracer/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/build
 .PHONY : rayTracer/fast
 
+hitSphere.o: hitSphere.cpp.o
+.PHONY : hitSphere.o
+
+# target to build an object file
+hitSphere.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/hitSphere.cpp.o
+.PHONY : hitSphere.cpp.o
+
+hitSphere.i: hitSphere.cpp.i
+.PHONY : hitSphere.i
+
+# target to preprocess a source file
+hitSphere.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/hitSphere.cpp.i
+.PHONY : hitSphere.cpp.i
+
+hitSphere.s: hitSphere.cpp.s
+.PHONY : hitSphere.s
+
+# target to generate assembly for a file
+hitSphere.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/hitSphere.cpp.s
+.PHONY : hitSphere.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -282,6 +306,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... rayTracer"
+	@echo "... hitSphere.o"
+	@echo "... hitSphere.i"
+	@echo "... hitSphere.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

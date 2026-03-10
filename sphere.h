@@ -1,6 +1,7 @@
 #pragma once
 
 #include "vec3.h"
+#include "ray.h"
 
 class sphere {
 public:
@@ -8,9 +9,10 @@ public:
     sphere(const vec3& center, const double& radius,
            const double& Kd, const double& Ks, const double& Ka,
            const vec3& Od, const vec3& Os,
-           const double& Kgls)
+           const double& Kgls,
+           const double& Refl)
            :
-           center(center), radius(radius), Kd(Kd), Ks(Ks), Ka(Ka), Od(Od), Os(Os), Kgls(Kgls) {}
+           center(center), radius(radius), Kd(Kd), Ks(Ks), Ka(Ka), Od(Od), Os(Os), Kgls(Kgls), Refl(Refl) {}
 
     vec3 getCenter() const{
         return center;
@@ -36,6 +38,9 @@ public:
     double getKgls() const{
         return Kgls;
     }
+    double getRefl() const{
+        return Refl;
+    }
 private:
     vec3 center;
     double radius;
@@ -45,4 +50,5 @@ private:
     vec3 Od;
     vec3 Os;
     double Kgls;
+    double Refl;
 };

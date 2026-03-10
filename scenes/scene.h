@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../sphere.h"
+#include "../polygon.h"
 
 class scene {
 public:
@@ -16,7 +17,8 @@ public:
           const vec3 &ambientLight,
           const vec3 &backgroundColor,
 
-          const vector<sphere>& objects)
+          const vector<sphere>& spheres,
+          const vector<polygon>& polygons)
 
           :
 
@@ -30,7 +32,9 @@ public:
           ambientLight(ambientLight),
           backgroundColor(backgroundColor),
 
-          objects(objects){}
+          spheres(spheres),
+          polygons(polygons)
+          {}
 
 
     double focalLength;
@@ -43,10 +47,13 @@ public:
     vec3 ambientLight;
     vec3 backgroundColor;
 
-    vector<sphere> objects;
+    vector<sphere> spheres;
+    vector<polygon> polygons;
 };
 
 
 scene magentaSphere();
 scene threeSpheres();
 scene spiralSpheres();
+
+scene fushigi();

@@ -18,7 +18,8 @@ scene spiralSpheres(){
                                  0.3,
                                  {r, g, b},
                                  {1.0, 1.0, 1.0},
-                                 4.0));
+                                 4.0,
+                                 0.0));
         angle += 1.0;
         x += cos(angle) * radius;
         y += sin(angle) * radius;
@@ -38,5 +39,6 @@ scene spiralSpheres(){
                  vec3(0.1, 0.1, 0.1),
                  vec3(0.2, 0.2, 0.2),
 
-                 spheres);
+                 spheres,
+                 vector<polygon>{});
 }

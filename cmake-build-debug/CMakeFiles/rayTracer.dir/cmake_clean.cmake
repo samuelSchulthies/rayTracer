@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/rayTracer.dir/hitSphere.cpp.o"
+  "CMakeFiles/rayTracer.dir/hitSphere.cpp.o.d"
   "CMakeFiles/rayTracer.dir/main.cpp.o"
   "CMakeFiles/rayTracer.dir/main.cpp.o.d"
   "CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o"

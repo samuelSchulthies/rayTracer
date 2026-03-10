@@ -8,9 +8,10 @@ public:
     polygon(const vector<vec3>& vertices,
            const double& Kd, const double& Ks, const double& Ka,
            const vec3& Od, const vec3& Os,
-           const double& Kgls)
+           const double& Kgls,
+           const double& Refl)
            :
-           vertices(vertices), Kd(Kd), Ks(Ks), Ka(Ka), Od(Od), Os(Os), Kgls(Kgls) {}
+           vertices(vertices), Kd(Kd), Ks(Ks), Ka(Ka), Od(Od), Os(Os), Kgls(Kgls), Refl(Refl) {}
 
     vector<vec3> getVertices() const{
         return vertices;
@@ -33,6 +34,12 @@ public:
     double getKgls() const{
         return Kgls;
     }
+    double getRefl() const{
+        return Kgls;
+    }
+
+
+
 private:
     vector<vec3> vertices;
     double radius;
@@ -42,4 +49,5 @@ private:
     vec3 Od;
     vec3 Os;
     double Kgls;
+    double Refl;
 };

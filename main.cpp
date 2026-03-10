@@ -1,7 +1,7 @@
 #include "vec3.h"
 #include "color.h"
 #include "ray.h"
-#include "sphere.h"
+#include "hittable.h"
 #include "scenes/scene.h"
 
 #include <iostream>
@@ -13,25 +13,6 @@ scene scene = threeSpheres();
 
 vec3 computePhong(sphere sphere, ray ray, double t);
 
-// place a sphere
-double hit_sphere(const point3& center, double radius, const ray& r) {
-    /*
-    This uses the quadratic formula to calculate if the ray hits the sphere. Returns true if the discriminant of the
-    formula is greater than or equal to 0, meaning we have 1 or two solutions. If it returns less than 0, we are not
-    intersecting the sphere and return false.
-    */
-    vec3 rayToSphere = center - r.origin();
-    auto a = dot(r.direction(), r.direction());
-    auto b = -2.0 * dot(r.direction(), rayToSphere);
-    auto c = dot(rayToSphere, rayToSphere) - radius*radius;
-    auto discriminant = b*b - 4*a*c;
-
-    if (discriminant >= 0){
-        return (-b - sqrt(discriminant)) / (2.0 * a);
-    }
-    return -1.0;
-}
-
 color ray_color(const ray& ray) {
     /*
     This function takes in a ray and sends it to our hit function to see if that ray intersects a provided sphere,
@@ -42,8 +23,8 @@ color ray_color(const ray& ray) {
     background for a gradient
 
      */
-    for (sphere sphere : scene.objects){
-        double t = hit_sphere(sphere.getCenter(), sphere.getRadius(), ray);
+    for (sphere sphere : scene.spheres){
+        double t = hitSphere(sphere.getCenter(), sphere.getRadius(), ray);
         if (t > 0.0){
             return computePhong(sphere, ray, t);
         }
@@ -64,7 +45,7 @@ vec3 computePhong(sphere sphere, ray ray, double t){
     // return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);
 
     double n_dot_l = max(dot(normal, unit_vector(scene.directionToLight)), 0.0);
-    vec3 reflection = unit_vector((2 * n_dot_l * normal) - scene.directionToLight); // This made spec show up but spec is wrong
+    vec3 reflection = unit_vector((2 * n_dot_l * normal) - unit_vector(scene.directionToLight));
 
     vec3 ambient = sphere.getKa() * scene.ambientLight * sphere.getOd();
     vec3 diffuse = sphere.getKd() * scene.lightColor * sphere.getOd() * n_dot_l;
