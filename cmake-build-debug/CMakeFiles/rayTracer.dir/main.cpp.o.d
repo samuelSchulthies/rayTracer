@@ -960,6 +960,7 @@ CMakeFiles/rayTracer.dir/main.cpp.o: \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/color.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec2.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/scene.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../sphere.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../vec3.h \

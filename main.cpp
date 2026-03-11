@@ -9,9 +9,11 @@
 
 using namespace std;
 
-scene scene = threeSpheres();
+scene scene = fushigi();
 
-vec3 computePhong(sphere sphere, ray ray, double t);
+//vec3 computePhong(sphere sphere, ray ray, double t);
+vec3 computePhong(polygon sphere, ray ray, vec3 normal);
+
 
 color ray_color(const ray& ray) {
     /*
@@ -23,10 +25,18 @@ color ray_color(const ray& ray) {
     background for a gradient
 
      */
-    for (sphere sphere : scene.spheres){
-        double t = hitSphere(sphere.getCenter(), sphere.getRadius(), ray);
-        if (t > 0.0){
-            return computePhong(sphere, ray, t);
+//    for (sphere sphere : scene.spheres){
+//        double t = hitSphere(sphere.getCenter(), sphere.getRadius(), ray);
+//        if (t > 0.0){
+//            return computePhong(sphere, ray, t);
+//        }
+//    }
+    for (polygon polygon : scene.polygons){
+        tuple<int, vec3> hitPoly = hitPolygon(polygon.getVertices(), ray);
+        int numCrossings = get<0>(hitPoly);
+        vec3 normal = get<1>(hitPoly);
+        if (numCrossings % 2 != 0){
+            return computePhong(polygon, ray, normal);
         }
     }
     return color(scene.backgroundColor);
@@ -36,10 +46,12 @@ color ray_color(const ray& ray) {
 //    return (1.0 - a) * color(1.0, 1.0, 1.0) + a * color(0.5, 0.7, 1.0);
 }
 
-vec3 computePhong(sphere sphere, ray ray, double t){
+//vec3 computePhong(sphere sphere, ray ray, double t){
+vec3 computePhong(polygon sphere, ray ray, vec3 normal){
 
-    vec3 normal = unit_vector(ray.at(t) - sphere.getCenter());
-    vec3 directionToCamera = unit_vector(ray.origin() - ray.at(t));
+//    vec3 normal = unit_vector(ray.at(t) - sphere.getCenter());
+//    vec3 directionToCamera = unit_vector(ray.origin() - ray.at(t));
+    vec3 directionToCamera = unit_vector(ray.origin() - normal);
 
     // uncomment to check normals
     // return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);

@@ -1,5 +1,5 @@
-CMakeFiles/rayTracer.dir/hitSphere.cpp.o: \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hitSphere.cpp \
+CMakeFiles/rayTracer.dir/hitPolygon.cpp.o: \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hitPolygon.cpp \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/cmath \

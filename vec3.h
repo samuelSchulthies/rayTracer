@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -105,3 +106,16 @@ inline vec3 cross(const vec3& u, const vec3& v) {
 inline vec3 unit_vector(const vec3& v) {
     return v / v.length();
 }
+
+//inline tuple<vec3, char> dominantProjection(const vec3& v, char dominant) {
+//    auto maxVal = max({abs(v.x()), abs(v.y()), abs(v.z())});
+//    if((maxVal == abs(v.x())) || (dominant == 'x')){
+//        return {vec3(0, v.y(), v.z()), 'x'};
+//    }
+//    if((maxVal == abs(v.y())) || (dominant == 'y')){
+//        return {vec3(v.x(), 0, v.z()), 'y'};
+//    }
+//    if((maxVal == abs(v.z())) || (dominant == 'z')){
+//        return {vec3(v.x(), v.y(), 0), 'z'};
+//    }
+//}
