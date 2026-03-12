@@ -16,7 +16,7 @@ tuple<int, double, vec3> hitPolygon(const vector<vec3>& vertices, const ray& ray
 
     double d = -(vertices[0].x() * planeNormal.x() + vertices[0].y() * planeNormal.y() + vertices[0].z() * planeNormal.z());
     auto planeDotRay = dot(planeNormal, ray.direction());
-    if (planeDotRay <= 0){ // TODO: implement logic to let shadow ray continue
+    if (planeDotRay >= 0){ // TODO: implement logic to let shadow ray continue
         return tuple<int, double, vec3>{numCrossings, 0, planeNormal};
     }
     double t = -(dot(planeNormal, ray.origin()) + d) / planeDotRay;
