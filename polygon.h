@@ -35,7 +35,7 @@ public:
         return Kgls;
     }
     double getRefl() const{
-        return Kgls;
+        return Refl;
     }
 
 

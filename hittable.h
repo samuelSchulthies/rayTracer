@@ -3,4 +3,4 @@
 #include "ray.h"
 
 double hitSphere(const point3& center, double radius, const ray& r);
-tuple<int, vec3>  hitPolygon(const vector<vec3>& vertices, const ray& ray);
+tuple<int, double, vec3>  hitPolygon(const vector<vec3>& vertices, const ray& ray);

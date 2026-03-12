@@ -1,18 +1,32 @@
 #include "hittable.h"
 
-tuple<int, vec3> hitPolygon(const vector<vec3>& vertices, const ray& ray) {
-    int numCrossings;
-    int signHolder;
-    int nextSignHolder;
+tuple<int, vec3> hitTri(const vector<vec3>& vertices, const ray& ray, vec3 vector1, vec3 vector2);
+
+tuple<int, double, vec3> hitPolygon(const vector<vec3>& vertices, const ray& ray) {
+    int numCrossings = 0;
+    int signHolder = 0;
+    int nextSignHolder = 0;
 
     // get vectors of 2 sides
     vec3 vector1 = vertices[0] - vertices[1];
     vec3 vector2 = vertices[2] - vertices[1];
 
-    // get plane normal
-    vec3 planeNormal = cross(vector1, vector2);
+    // get plane normal // TODO: check normals
+    vec3 planeNormal = unit_vector(cross(vector2, vector1));
+
     double d = -(vertices[0].x() * planeNormal.x() + vertices[0].y() * planeNormal.y() + vertices[0].z() * planeNormal.z());
-    double t = -(dot(planeNormal, ray.origin()) + d) / dot(planeNormal, ray.direction());
+    auto planeDotRay = dot(planeNormal, ray.direction());
+    if (planeDotRay <= 0){ // TODO: implement logic to let shadow ray continue
+        return tuple<int, double, vec3>{numCrossings, 0, planeNormal};
+    }
+    double t = -(dot(planeNormal, ray.origin()) + d) / planeDotRay;
+    if (t <= 0){
+        return tuple<int, double, vec3>{numCrossings, t, planeNormal};
+    }
+
+//    if(vertices.size() == 3){
+//        return hitTri(vertices, ray, vector1, vector2);
+//    }
 
     // get dominant axis
     tuple<vec2, char> dominant = dominantProjection(planeNormal, 0);
@@ -66,7 +80,7 @@ tuple<int, vec3> hitPolygon(const vector<vec3>& vertices, const ray& ray) {
             }
             // might cross +U
             else if ((translatedVertices.at(i).u() > 0) || (translatedVertices.at(i_1).u() > 0)){
-                double ucross = (translatedVertices.at(i).u() - translatedVertices.at(i_1).v()) *
+                double ucross = translatedVertices.at(i).u() - translatedVertices.at(i).v() *
                                 ((translatedVertices.at(i_1).u() - translatedVertices.at(i).u()) /
                                 (translatedVertices.at(i_1).v() - translatedVertices.at(i).v()));
                 // crosses +U so increment
@@ -77,5 +91,9 @@ tuple<int, vec3> hitPolygon(const vector<vec3>& vertices, const ray& ray) {
         }
         signHolder = nextSignHolder;
     }
-    return tuple<int, vec3>{numCrossings, planeNormal};
+    return tuple<int, double, vec3>{numCrossings, t, planeNormal};
 }
+
+//tuple<int, vec3> hitTri(const vector<vec3>& vertices, const ray& ray, vec3 vector1, vec3 vector2) {
+//    return tuple<int, vec3>{1, planeNormal}
+//}
