@@ -29,6 +29,11 @@ scene spiralSpheres(){
         g += 0.05;
         b -= 0.05;
     }
+    vector<hittable*> objects;
+    for(int i = 0; i < spheres.size(); i++) {
+        objects.push_back(&spheres.at(i));
+    }
+
     return scene(1.0,
                  vec3(0, 0, 0),
                  vec3(0,0,0),
@@ -39,6 +44,5 @@ scene spiralSpheres(){
                  vec3(0.1, 0.1, 0.1),
                  vec3(0.2, 0.2, 0.2),
 
-                 spheres,
-                 vector<polygon>{});
+                 objects);
 }

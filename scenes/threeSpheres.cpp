@@ -38,6 +38,8 @@ scene threeSpheres() {
                       16.0,
                       0.0);
 
+    vector<hittable*> objects = {&whiteSphere, &redSphere, &greenSphere, &blueSphere};
+
     return scene(1.0,
                  vec3(0, 0, 0),
                  vec3(0,0,0),
@@ -48,6 +50,5 @@ scene threeSpheres() {
                  vec3(0.1, 0.1, 0.1),
                  vec3(0.2, 0.2, 0.2),
 
-                 vector<sphere>{whiteSphere, redSphere, greenSphere, blueSphere},
-                vector<polygon>{});
+                 objects);
 }

@@ -43,7 +43,7 @@ public:
         return Refl;
     }
 
-    bool hit(const ray &ray){
+    bool hit(const ray& ray) override {
         vec3 rayToSphere = center - ray.origin();
         auto a = dot(ray.direction(), ray.direction());
         auto b = -2.0 * dot(ray.direction(), rayToSphere);
@@ -57,10 +57,24 @@ public:
         }
         return false;
     }
-//        return hitSphere(center, radius, ray);
-//        if (t > 0.0) {
-//            return computePhong(sphere, ray, t);
-//        }
+
+    vec3 computePhong(const ray& ray, vec3 directionToLight, vec3 ambientLight, vec3 lightColor) {
+
+        vec3 directionToCamera = unit_vector(ray.origin() - ray.at(t));
+        // uncomment to check normals
+        // return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);
+
+        double n_dot_l = dot(normal, unit_vector(directionToLight));
+        vec3 reflection = unit_vector((2 * n_dot_l * normal) - unit_vector(directionToLight));
+
+        vec3 ambient = Ka * ambientLight * Od;
+        vec3 diffuse = Kd * lightColor * Od * n_dot_l;
+        vec3 specular = Ks * lightColor * Os * (pow(max(dot(directionToCamera, reflection), 0.0), Kgls));
+
+        vec3 lightTotal = ambient + diffuse + specular;
+
+        return color(lightTotal);
+    }
 
 private:
     vec3 center;

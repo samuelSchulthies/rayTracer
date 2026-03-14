@@ -17,7 +17,7 @@ public:
           const vec3 &ambientLight,
           const vec3 &backgroundColor,
 
-          vector<hittable*> objects)
+          vector<hittable*> &objects)
 
           :
 

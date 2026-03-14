@@ -11,61 +11,15 @@ using namespace std;
 
 scene scene = fushigi();
 
-//vec3 computePhong(sphere sphere, ray ray, double t);
-vec3 computePhong(const ray& ray, hittable* object);
-
-
 color ray_color(const ray& ray) {
+    auto objects = scene.objects;
     for (unsigned int i = 0; i < scene.objects.size(); i++){
         if(scene.objects[i]->hit(ray)){
-            return computePhong(ray, scene.objects[i]);
+            return scene.objects[i]->computePhong(ray, scene.directionToLight, scene.ambientLight, scene.lightColor);
         }
-
-
-//        for (sphere sphere : scene.spheres){
-//            double t = hitSphere(sphere.getCenter(), sphere.getRadius(), ray);
-//            if (t > 0.0){
-//                return computePhong(sphere, ray, t);
-//            }
-//        }
-//        for (polygon polygon : scene.polygons){
-//            tuple<int, double, vec3> hitPoly = hitPolygon(polygon.getVertices(), ray);
-//            int numCrossings = get<0>(hitPoly);
-//            double t = get<1>(hitPoly);
-//            vec3 normal = get<2>(hitPoly);
-//            if (numCrossings % 2 != 0){
-//                return computePhong(polygon, ray, normal, t);
-//            }
-//        }
 
     }
     return color(scene.backgroundColor);
-
-//    vec3 unit_direction = unit_vector(ray.direction());
-//    auto a = 0.5 * (unit_direction.y() + 1.0);
-//    return (1.0 - a) * color(1.0, 1.0, 1.0) + a * color(0.5, 0.7, 1.0);
-}
-
-//vec3 computePhong(sphere sphere, ray ray, double t){
-vec3 computePhong(const ray& ray, hittable* object){
-
-//    vec3 normal = unit_vector(ray.at(t) - sphere.getCenter());
-    vec3 directionToCamera = unit_vector(ray.origin() - ray.at(object.));
-//    vec3 directionToCamera = unit_vector(ray.origin() - normal);
-
-    // uncomment to check normals
-    // return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);
-
-    double n_dot_l = max(dot(normal, unit_vector(scene.directionToLight)), 0.0);
-    vec3 reflection = unit_vector((2 * n_dot_l * normal) - unit_vector(scene.directionToLight));
-
-    vec3 ambient = sphere.getKa() * scene.ambientLight * sphere.getOd();
-    vec3 diffuse = sphere.getKd() * scene.lightColor * sphere.getOd() * n_dot_l;
-    vec3 specular = sphere.getKs() * scene.lightColor * sphere.getOs() * (pow(max(dot(directionToCamera, reflection), 0.0), sphere.getKgls()));
-
-    vec3 lightTotal = ambient + diffuse + specular;
-
-    return color(lightTotal);
 }
 
 int main() {

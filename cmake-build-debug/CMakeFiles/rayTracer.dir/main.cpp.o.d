@@ -965,4 +965,6 @@ CMakeFiles/rayTracer.dir/main.cpp.o: \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../sphere.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../vec3.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../ray.h \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../polygon.h
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../hittable.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../polygon.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../vec2.h

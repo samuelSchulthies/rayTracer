@@ -1,6 +1,7 @@
 #pragma once
 
 #include "vec3.h"
+#include "vec2.h"
 #include "hittable.h"
 
 class polygon : public hittable{
@@ -38,12 +39,30 @@ public:
     double getRefl() const{
         return Refl;
     }
-    bool hit(const ray& ray){
+
+    vec3 computePhong(const ray& ray, vec3 directionToLight, vec3 ambientLight, vec3 lightColor) {
+
+        vec3 directionToCamera = unit_vector(ray.origin() - ray.at(t));
+        // uncomment to check normals
+        // return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);
+
+        double n_dot_l = dot(normal, unit_vector(directionToLight));
+        vec3 reflection = unit_vector((2 * n_dot_l * normal) - unit_vector(directionToLight));
+
+        vec3 ambient = Ka * ambientLight * Od;
+        vec3 diffuse = Kd * lightColor * Od * n_dot_l;
+        vec3 specular = Ks * lightColor * Os * (pow(max(dot(directionToCamera, reflection), 0.0), Kgls));
+
+        vec3 lightTotal = ambient + diffuse + specular;
+
+        return color(lightTotal);
+    }
+
+    bool hit(const ray& ray) override {
         tuple<int, double, vec3> hitPoly = hitPolygon(ray);
         int numCrossings = get<0>(hitPoly);
         t = get<1>(hitPoly);
         normal = get<2>(hitPoly);
-//        return tuple<int, double, vec3>{numCrossings, t, normal};
         if (numCrossings % 2 != 0) {
             return true;
         }
@@ -72,7 +91,7 @@ private:
         vec3 vector2 = vertices[1] - vertices[2];
 
         // get plane normal // TODO: check normals
-        vec3 planeNormal = unit_vector(cross(vector2, vector1));
+        vec3 planeNormal = unit_vector(cross(vector1, vector2));
 
         // get plane intersection
         double d = -(vertices[0].x() * planeNormal.x() + vertices[0].y() * planeNormal.y() + vertices[0].z() * planeNormal.z());
