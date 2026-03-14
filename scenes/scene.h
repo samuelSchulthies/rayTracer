@@ -17,8 +17,7 @@ public:
           const vec3 &ambientLight,
           const vec3 &backgroundColor,
 
-          const vector<sphere>& spheres,
-          const vector<polygon>& polygons)
+          vector<hittable*> objects)
 
           :
 
@@ -32,8 +31,7 @@ public:
           ambientLight(ambientLight),
           backgroundColor(backgroundColor),
 
-          spheres(spheres),
-          polygons(polygons)
+          objects(objects)
           {}
 
 
@@ -47,8 +45,7 @@ public:
     vec3 ambientLight;
     vec3 backgroundColor;
 
-    vector<sphere> spheres;
-    vector<polygon> polygons;
+    vector<hittable*> objects;
 };
 
 

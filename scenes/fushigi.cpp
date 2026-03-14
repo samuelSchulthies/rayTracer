@@ -31,6 +31,8 @@ scene fushigi() {
                          4.0,
                          0.0);
 
+    vector<hittable*> objects = {&reflectiveSphere, &blueTriangle, &yellowTriangle};
+
     return scene(1.0,
                  vec3(0, 0, 0),
                  vec3(0,0,0),
@@ -41,6 +43,5 @@ scene fushigi() {
                  vec3(0.1, 0.1, 0.1),
                  vec3(0.2, 0.2, 0.2),
 
-                 vector<sphere>{reflectiveSphere},
-                 vector<polygon>{blueTriangle, yellowTriangle});
+                 objects);
 }

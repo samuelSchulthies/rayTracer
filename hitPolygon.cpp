@@ -1,6 +1,18 @@
 #include "hittable.h"
 
-tuple<int, vec3> hitTri(const vector<vec3>& vertices, const ray& ray, vec3 vector1, vec3 vector2);
+//tuple<int, vec3> hitTri(const vector<vec3>& vertices, const ray& ray, vec3 vector1, vec3 vector2);
+
+tuple<int, double, vec3> hit(ray ray) {
+    for (polygon polygon: scene.polygons) {
+        tuple<int, double, vec3> hitPoly = hitPolygon(polygon.getVertices(), ray);
+        int numCrossings = get<0>(hitPoly);
+        double t = get<1>(hitPoly);
+        vec3 normal = get<2>(hitPoly);
+        if (numCrossings % 2 != 0) {
+            return computePhong(polygon, ray, normal, t);
+        }
+    }
+}
 
 tuple<int, double, vec3> hitPolygon(const vector<vec3>& vertices, const ray& ray) {
     int numCrossings = 0;
@@ -9,17 +21,22 @@ tuple<int, double, vec3> hitPolygon(const vector<vec3>& vertices, const ray& ray
 
     // get vectors of 2 sides
     vec3 vector1 = vertices[0] - vertices[1];
-    vec3 vector2 = vertices[2] - vertices[1];
+    vec3 vector2 = vertices[1] - vertices[2];
 
     // get plane normal // TODO: check normals
     vec3 planeNormal = unit_vector(cross(vector2, vector1));
 
+    // get plane intersection
     double d = -(vertices[0].x() * planeNormal.x() + vertices[0].y() * planeNormal.y() + vertices[0].z() * planeNormal.z());
     auto planeDotRay = dot(planeNormal, ray.direction());
+
+    // if ray is parallel or normal is pointing away, cull face
     if (planeDotRay >= 0){ // TODO: implement logic to let shadow ray continue
         return tuple<int, double, vec3>{numCrossings, 0, planeNormal};
     }
     double t = -(dot(planeNormal, ray.origin()) + d) / planeDotRay;
+
+    // If intersection is behind ray, don't draw face
     if (t <= 0){
         return tuple<int, double, vec3>{numCrossings, t, planeNormal};
     }

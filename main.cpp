@@ -12,33 +12,32 @@ using namespace std;
 scene scene = fushigi();
 
 //vec3 computePhong(sphere sphere, ray ray, double t);
-vec3 computePhong(polygon sphere, ray ray, vec3 normal, double t);
+vec3 computePhong(const ray& ray, hittable* object);
 
 
 color ray_color(const ray& ray) {
-    /*
-    This function takes in a ray and sends it to our hit function to see if that ray intersects a provided sphere,
-    represented by point3 with a given radius. If it returns true, we hit the sphere and it colors that pixel purple
-    in our ppm file.
-
-    If it does not return true, we return grey for the background. Commented out code was for interpolating across the
-    background for a gradient
-
-     */
-//    for (sphere sphere : scene.spheres){
-//        double t = hitSphere(sphere.getCenter(), sphere.getRadius(), ray);
-//        if (t > 0.0){
-//            return computePhong(sphere, ray, t);
-//        }
-//    }
-    for (polygon polygon : scene.polygons){
-        tuple<int, double, vec3> hitPoly = hitPolygon(polygon.getVertices(), ray);
-        int numCrossings = get<0>(hitPoly);
-        double t = get<1>(hitPoly);
-        vec3 normal = get<2>(hitPoly);
-        if (numCrossings % 2 != 0){
-            return computePhong(polygon, ray, normal, t);
+    for (unsigned int i = 0; i < scene.objects.size(); i++){
+        if(scene.objects[i]->hit(ray)){
+            return computePhong(ray, scene.objects[i]);
         }
+
+
+//        for (sphere sphere : scene.spheres){
+//            double t = hitSphere(sphere.getCenter(), sphere.getRadius(), ray);
+//            if (t > 0.0){
+//                return computePhong(sphere, ray, t);
+//            }
+//        }
+//        for (polygon polygon : scene.polygons){
+//            tuple<int, double, vec3> hitPoly = hitPolygon(polygon.getVertices(), ray);
+//            int numCrossings = get<0>(hitPoly);
+//            double t = get<1>(hitPoly);
+//            vec3 normal = get<2>(hitPoly);
+//            if (numCrossings % 2 != 0){
+//                return computePhong(polygon, ray, normal, t);
+//            }
+//        }
+
     }
     return color(scene.backgroundColor);
 
@@ -48,10 +47,10 @@ color ray_color(const ray& ray) {
 }
 
 //vec3 computePhong(sphere sphere, ray ray, double t){
-vec3 computePhong(polygon sphere, ray ray, vec3 normal, double t){
+vec3 computePhong(const ray& ray, hittable* object){
 
 //    vec3 normal = unit_vector(ray.at(t) - sphere.getCenter());
-    vec3 directionToCamera = unit_vector(ray.origin() - ray.at(t));
+    vec3 directionToCamera = unit_vector(ray.origin() - ray.at(object.));
 //    vec3 directionToCamera = unit_vector(ray.origin() - normal);
 
     // uncomment to check normals

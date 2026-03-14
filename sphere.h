@@ -2,8 +2,9 @@
 
 #include "vec3.h"
 #include "ray.h"
+#include "hittable.h"
 
-class sphere {
+class sphere : public hittable{
 public:
     sphere() {}
     sphere(const vec3& center, const double& radius,
@@ -41,6 +42,26 @@ public:
     double getRefl() const{
         return Refl;
     }
+
+    bool hit(const ray &ray){
+        vec3 rayToSphere = center - ray.origin();
+        auto a = dot(ray.direction(), ray.direction());
+        auto b = -2.0 * dot(ray.direction(), rayToSphere);
+        auto c = dot(rayToSphere, rayToSphere) - radius*radius;
+        auto discriminant = b*b - 4*a*c;
+        t = (-b - sqrt(discriminant)) / (2.0 * a);
+        normal = unit_vector(ray.at(t) - center);
+
+        if (discriminant >= 0){
+            return true;
+        }
+        return false;
+    }
+//        return hitSphere(center, radius, ray);
+//        if (t > 0.0) {
+//            return computePhong(sphere, ray, t);
+//        }
+
 private:
     vec3 center;
     double radius;
@@ -51,4 +72,6 @@ private:
     vec3 Os;
     double Kgls;
     double Refl;
+    double t;
+    vec3 normal;
 };
