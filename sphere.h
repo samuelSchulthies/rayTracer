@@ -43,6 +43,10 @@ public:
         return Refl;
     }
 
+    double getT() override{
+        return t;
+    }
+
     bool hit(const ray& ray) override {
         vec3 rayToSphere = center - ray.origin();
         auto a = dot(ray.direction(), ray.direction());
@@ -59,12 +63,13 @@ public:
     }
 
     vec3 computePhong(const ray& ray, vec3 directionToLight, vec3 ambientLight, vec3 lightColor) {
-
-        vec3 directionToCamera = unit_vector(ray.origin() - ray.at(t));
         // uncomment to check normals
         // return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);
 
+        vec3 directionToCamera = unit_vector(ray.origin() - ray.at(t));
+
         double n_dot_l = dot(normal, unit_vector(directionToLight));
+
         vec3 reflection = unit_vector((2 * n_dot_l * normal) - unit_vector(directionToLight));
 
         vec3 ambient = Ka * ambientLight * Od;

@@ -129,54 +129,6 @@ rayTracer/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/build
 .PHONY : rayTracer/fast
 
-hitPolygon.o: hitPolygon.cpp.o
-.PHONY : hitPolygon.o
-
-# target to build an object file
-hitPolygon.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/hitPolygon.cpp.o
-.PHONY : hitPolygon.cpp.o
-
-hitPolygon.i: hitPolygon.cpp.i
-.PHONY : hitPolygon.i
-
-# target to preprocess a source file
-hitPolygon.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/hitPolygon.cpp.i
-.PHONY : hitPolygon.cpp.i
-
-hitPolygon.s: hitPolygon.cpp.s
-.PHONY : hitPolygon.s
-
-# target to generate assembly for a file
-hitPolygon.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/hitPolygon.cpp.s
-.PHONY : hitPolygon.cpp.s
-
-hitSphere.o: hitSphere.cpp.o
-.PHONY : hitSphere.o
-
-# target to build an object file
-hitSphere.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/hitSphere.cpp.o
-.PHONY : hitSphere.cpp.o
-
-hitSphere.i: hitSphere.cpp.i
-.PHONY : hitSphere.i
-
-# target to preprocess a source file
-hitSphere.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/hitSphere.cpp.i
-.PHONY : hitSphere.cpp.i
-
-hitSphere.s: hitSphere.cpp.s
-.PHONY : hitSphere.s
-
-# target to generate assembly for a file
-hitSphere.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/hitSphere.cpp.s
-.PHONY : hitSphere.cpp.s
-
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -330,12 +282,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... rayTracer"
-	@echo "... hitPolygon.o"
-	@echo "... hitPolygon.i"
-	@echo "... hitPolygon.s"
-	@echo "... hitSphere.o"
-	@echo "... hitSphere.i"
-	@echo "... hitSphere.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

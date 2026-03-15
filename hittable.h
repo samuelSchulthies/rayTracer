@@ -11,6 +11,8 @@ public:
     virtual bool hit(const ray& ray) = 0;
 
     virtual vec3 computePhong(const ray& ray, vec3 directionToLight, vec3 ambientLight, vec3 lightColor) = 0;
+
+    virtual double getT() = 0;
 };
 
 //double hit(const point3& center, double radius, const ray& r);

@@ -10,13 +10,32 @@ using namespace std;
 
 scene scene = fushigi();
 
-color ray_color(const ray& ray) {
+color ray_color(const ray& r) {
     auto objects = scene.objects;
-    for (unsigned int i = 0; i < scene.objects.size(); i++){
-        if(scene.objects[i]->hit(ray)){
-            return scene.objects[i]->computePhong(ray, scene.directionToLight, scene.ambientLight, scene.lightColor);
-        }
 
+    // loop over every object in the scene (triangles, spheres)
+    for (unsigned int i = 0; i < scene.objects.size(); i++){
+        auto object = scene.objects.at(i);
+        bool foundShadow = false;
+
+        if(scene.objects[i]->hit(r)){
+            // check if it's a shadow ray. If not, sent another ray as a shadow ray. If it is a shadow ray, we hit, return black
+            if(r.shadowRay()){
+                foundShadow = true;
+                return color(0.0,0.0,0.0);
+            }
+            if(!r.shadowRay()){
+                ray shadowRay(r.at(object->getT()), unit_vector(scene.directionToLight - r.at(object->getT())));
+                shadowRay.setIsShadowRay(true);
+                auto color =  ray_color(shadowRay);
+                if(foundShadow){
+                    return color;
+                }
+                else {
+                    return scene.objects[i]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor);
+                }
+            }
+        }
     }
     return color(scene.backgroundColor);
 }

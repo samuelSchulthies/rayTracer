@@ -19,7 +19,16 @@ public:
         return orig + t*dir;
     }
 
+    bool shadowRay() const {
+        return isShadowRay;
+    }
+
+    void setIsShadowRay(bool shadow){
+        isShadowRay = shadow;
+    }
+
 private:
     point3 orig;
     vec3 dir;
+    bool isShadowRay;
 };

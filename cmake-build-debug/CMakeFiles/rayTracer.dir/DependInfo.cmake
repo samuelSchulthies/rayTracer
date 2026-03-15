@@ -8,8 +8,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/hitPolygon.cpp" "CMakeFiles/rayTracer.dir/hitPolygon.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/hitPolygon.cpp.o.d"
-  "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/hitSphere.cpp" "CMakeFiles/rayTracer.dir/hitSphere.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/hitSphere.cpp.o.d"
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/main.cpp" "CMakeFiles/rayTracer.dir/main.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/main.cpp.o.d"
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/fushigi.cpp" "CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o.d"
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/magentaSphere.cpp" "CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o.d"

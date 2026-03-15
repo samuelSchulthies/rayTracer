@@ -40,11 +40,15 @@ public:
         return Refl;
     }
 
-    vec3 computePhong(const ray& ray, vec3 directionToLight, vec3 ambientLight, vec3 lightColor) {
+    double getT() override{
+        return t;
+    }
 
-        vec3 directionToCamera = unit_vector(ray.origin() - ray.at(t));
+    vec3 computePhong(const ray& r, vec3 directionToLight, vec3 ambientLight, vec3 lightColor) {
         // uncomment to check normals
         // return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);
+
+        vec3 directionToCamera = unit_vector(r.origin() - r.at(t));
 
         double n_dot_l = dot(normal, unit_vector(directionToLight));
         vec3 reflection = unit_vector((2 * n_dot_l * normal) - unit_vector(directionToLight));
@@ -97,8 +101,8 @@ private:
         double d = -(vertices[0].x() * planeNormal.x() + vertices[0].y() * planeNormal.y() + vertices[0].z() * planeNormal.z());
         auto planeDotRay = dot(planeNormal, ray.direction());
 
-        // if ray is parallel or normal is pointing away, cull face
-        if (planeDotRay >= 0){ // TODO: implement logic to let shadow ray continue
+        // if ray is parallel or normal is pointing away, cull face. Excludes shadow rays
+        if (planeDotRay >= 0 && !ray.shadowRay()){
             return tuple<int, double, vec3>{numCrossings, 0, planeNormal};
         }
         double t = -(dot(planeNormal, ray.origin()) + d) / planeDotRay;
