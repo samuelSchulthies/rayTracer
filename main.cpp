@@ -17,20 +17,24 @@ color ray_color(const ray& r) {
 
     // loop over every object in the scene (triangles, spheres)
     for (unsigned int i = 0; i < scene.objects.size(); i++) {
-        auto object = scene.objects.at(i);
+        auto object= scene.objects.at(i);
         color shadowColor;
         bool hitObject = false;
         if (scene.objects[i]->hit(r)) {
             hitObject = true;
         }
         if (hitObject && !r.shadowRay()){
-            ray shadowRay(r.at(object->getT()), unit_vector(scene.directionToLight - r.at(object->getT())));
+            vec3 offset = object->getNormal() * 0.0001;
+            vec3 shadowRayOrigin = r.at(object->getT()) + offset;
+            vec3 shadowRayDirection = unit_vector(scene.directionToLight - r.at(object->getT()));
+            double test = dot(shadowRayDirection, scene.directionToLight);
+            ray shadowRay(shadowRayOrigin, shadowRayDirection);
             shadowRay.setIsShadowRay(true);
             shadowColor = ray_color(shadowRay);
         }
         if (hitObject && r.shadowRay()) {
             isInShadow = true;
-            return color(scene.ambientLight);
+            return color(0.0,0.0,0.0);
         }
         if (hitObject && isInShadow){
             isInShadow = false;

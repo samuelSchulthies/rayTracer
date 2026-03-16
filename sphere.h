@@ -47,6 +47,10 @@ public:
         return t;
     }
 
+    vec3 getNormal() override {
+        return normal;
+    }
+
     bool hit(const ray& r) override {
         vec3 rayToSphere = center - r.origin();
         auto a = dot(r.direction(), r.direction());
@@ -67,7 +71,7 @@ public:
 
     vec3 computePhong(const ray& ray, vec3 directionToLight, vec3 ambientLight, vec3 lightColor) {
         // uncomment to check normals
-        // return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);
+//        return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);
 
         vec3 directionToCamera = unit_vector(ray.origin() - ray.at(t));
 

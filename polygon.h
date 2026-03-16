@@ -44,9 +44,13 @@ public:
         return t;
     }
 
+    vec3 getNormal() override {
+        return normal;
+    }
+
     vec3 computePhong(const ray& r, vec3 directionToLight, vec3 ambientLight, vec3 lightColor) {
         // uncomment to check normals
-        // return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);
+//        return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);
 
         vec3 directionToCamera = unit_vector(r.origin() - r.at(t));
 
