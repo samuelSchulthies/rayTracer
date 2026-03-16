@@ -10,31 +10,34 @@ using namespace std;
 
 scene scene = fushigi();
 
+bool isInShadow = false;
+
 color ray_color(const ray& r) {
     auto objects = scene.objects;
 
     // loop over every object in the scene (triangles, spheres)
-    for (unsigned int i = 0; i < scene.objects.size(); i++){
+    for (unsigned int i = 0; i < scene.objects.size(); i++) {
         auto object = scene.objects.at(i);
-        bool foundShadow = false;
-
-        if(scene.objects[i]->hit(r)){
-            // check if it's a shadow ray. If not, sent another ray as a shadow ray. If it is a shadow ray, we hit, return black
-            if(r.shadowRay()){
-                foundShadow = true;
-                return color(0.0,0.0,0.0);
-            }
-            if(!r.shadowRay()){
-                ray shadowRay(r.at(object->getT()), unit_vector(scene.directionToLight - r.at(object->getT())));
-                shadowRay.setIsShadowRay(true);
-                auto color =  ray_color(shadowRay);
-                if(foundShadow){
-                    return color;
-                }
-                else {
-                    return scene.objects[i]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor);
-                }
-            }
+        color shadowColor;
+        bool hitObject = false;
+        if (scene.objects[i]->hit(r)) {
+            hitObject = true;
+        }
+        if (hitObject && !r.shadowRay()){
+            ray shadowRay(r.at(object->getT()), unit_vector(scene.directionToLight - r.at(object->getT())));
+            shadowRay.setIsShadowRay(true);
+            shadowColor = ray_color(shadowRay);
+        }
+        if (hitObject && r.shadowRay()) {
+            isInShadow = true;
+            return color(scene.ambientLight);
+        }
+        if (hitObject && isInShadow){
+            isInShadow = false;
+            return shadowColor;
+        }
+        if (hitObject && !isInShadow && !r.shadowRay()){
+            return scene.objects[i]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor);
         }
     }
     return color(scene.backgroundColor);

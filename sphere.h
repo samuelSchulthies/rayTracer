@@ -47,14 +47,17 @@ public:
         return t;
     }
 
-    bool hit(const ray& ray) override {
-        vec3 rayToSphere = center - ray.origin();
-        auto a = dot(ray.direction(), ray.direction());
-        auto b = -2.0 * dot(ray.direction(), rayToSphere);
+    bool hit(const ray& r) override {
+        vec3 rayToSphere = center - r.origin();
+        auto a = dot(r.direction(), r.direction());
+        auto b = -2.0 * dot(r.direction(), rayToSphere);
         auto c = dot(rayToSphere, rayToSphere) - radius*radius;
         auto discriminant = b*b - 4*a*c;
-        t = (-b - sqrt(discriminant)) / (2.0 * a);
-        normal = unit_vector(ray.at(t) - center);
+
+        if (!r.shadowRay()) {
+            t = (-b - sqrt(discriminant)) / (2.0 * a);
+            normal = unit_vector(r.at(t) - center);
+        }
 
         if (discriminant >= 0){
             return true;
@@ -69,7 +72,6 @@ public:
         vec3 directionToCamera = unit_vector(ray.origin() - ray.at(t));
 
         double n_dot_l = dot(normal, unit_vector(directionToLight));
-
         vec3 reflection = unit_vector((2 * n_dot_l * normal) - unit_vector(directionToLight));
 
         vec3 ambient = Ka * ambientLight * Od;

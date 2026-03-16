@@ -62,11 +62,14 @@ public:
         return color(lightTotal);
     }
 
-    bool hit(const ray& ray) override {
-        tuple<int, double, vec3> hitPoly = hitPolygon(ray);
+    bool hit(const ray& r) override {
+        tuple<int, double, vec3> hitPoly = hitPolygon(r);
         int numCrossings = get<0>(hitPoly);
-        t = get<1>(hitPoly);
-        normal = get<2>(hitPoly);
+
+        if (!r.shadowRay()) {
+            t = get<1>(hitPoly);
+            normal = get<2>(hitPoly);
+        }
         if (numCrossings % 2 != 0) {
             return true;
         }
