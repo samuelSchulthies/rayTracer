@@ -6,7 +6,7 @@ scene fushigi() {
 
     objects.push_back(new sphere({0.0, 0.3, -1.0},
                        0.25,
-                       0.0,
+                       0.9,
                        0.1,
                        0.1,
                        {0.75, 0.75, 0.75},

@@ -4,6 +4,8 @@
 #include "ray.h"
 #include "hittable.h"
 
+#include <algorithm>
+
 class sphere : public hittable{
 public:
     sphere() {}
@@ -58,14 +60,21 @@ public:
         auto c = dot(rayToSphere, rayToSphere) - radius*radius;
         auto discriminant = b*b - 4*a*c;
 
+        double tFromHit = (-b - sqrt(discriminant)) / (2.0 * a);
+
+        if (tFromHit < 0){
+            return false;
+        }
+
         if (!r.shadowRay()) {
-            t = (-b - sqrt(discriminant)) / (2.0 * a);
+            t = tFromHit;
             normal = unit_vector(r.at(t) - center);
         }
 
         if (discriminant >= 0){
             return true;
         }
+
         return false;
     }
 
@@ -75,7 +84,7 @@ public:
 
         vec3 directionToCamera = unit_vector(ray.origin() - ray.at(t));
 
-        double n_dot_l = dot(normal, unit_vector(directionToLight));
+        double n_dot_l = max(dot(normal, unit_vector(directionToLight)), 0.0);
         vec3 reflection = unit_vector((2 * n_dot_l * normal) - unit_vector(directionToLight));
 
         vec3 ambient = Ka * ambientLight * Od;
@@ -86,6 +95,7 @@ public:
 
         return color(lightTotal);
     }
+
 
 private:
     vec3 center;
