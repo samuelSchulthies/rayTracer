@@ -26,15 +26,15 @@ color ray_color(const ray& r) {
         if (hitObject && !r.shadowRay()){
             vec3 offset = object->getNormal() * 0.0001;
             vec3 shadowRayOrigin = r.at(object->getT()) + offset;
-            vec3 shadowRayDirection = unit_vector(scene.directionToLight - r.at(object->getT()));
-            double test = dot(shadowRayDirection, scene.directionToLight);
+            vec3 shadowRayDirection = unit_vector(scene.directionToLight); // only subtract from ray hit if point light
+//            double test = dot(shadowRayDirection, scene.directionToLight);
             ray shadowRay(shadowRayOrigin, shadowRayDirection);
             shadowRay.setIsShadowRay(true);
             shadowColor = ray_color(shadowRay);
         }
         if (hitObject && r.shadowRay()) {
             isInShadow = true;
-            return color(0.0,0.0,0.0);
+            return color(1.0,0.0,0.0);
         }
         if (hitObject && isInShadow){
             isInShadow = false;

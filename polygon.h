@@ -74,9 +74,13 @@ public:
             t = get<1>(hitPoly);
             normal = get<2>(hitPoly);
         }
+        if (t <= 0) {
+            return false;
+        }
         if (numCrossings % 2 != 0) {
             return true;
         }
+        return false;
     }
 
 private:
@@ -101,7 +105,7 @@ private:
         vec3 vector1 = vertices[0] - vertices[1];
         vec3 vector2 = vertices[1] - vertices[2];
 
-        // get plane normal // TODO: check normals
+        // get plane normal
         vec3 planeNormal = unit_vector(cross(vector1, vector2));
 
         // get plane intersection
