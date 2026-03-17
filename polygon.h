@@ -48,7 +48,16 @@ public:
         return normal;
     }
 
-    vec3 computePhong(const ray& r, vec3 directionToLight, vec3 ambientLight, vec3 lightColor) {
+    virtual double getRefl() override {
+        return Refl;
+    }
+
+    virtual string getType() override {
+        return type;
+    }
+
+
+    vec3 computePhong(const ray& r, vec3 directionToLight, vec3 ambientLight, vec3 lightColor) override {
         // uncomment to check normals
 //        return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);
 
@@ -70,7 +79,7 @@ public:
         tuple<int, double, vec3> hitPoly = hitPolygon(r);
         int numCrossings = get<0>(hitPoly);
 
-        if (!r.shadowRay()) {
+        if (!r.shadowRay() && !r.reflectionRay()) {
             t = get<1>(hitPoly);
             normal = get<2>(hitPoly);
         }
@@ -95,6 +104,7 @@ private:
     double Refl;
     double t;
     vec3 normal;
+    string type = "polygon";
 
     tuple<int, double, vec3> hitPolygon(const ray& ray) const {
         int numCrossings = 0;

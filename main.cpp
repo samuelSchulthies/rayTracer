@@ -12,6 +12,9 @@ using namespace std;
 scene scene = fushigi();
 
 bool isInShadow = false;
+int maxReflectionDepth = 3;
+int currentReflectionDepth = 0;
+int returns = 0;
 
 color ray_color(const ray& r) {
     auto objects = scene.objects;
@@ -22,6 +25,7 @@ color ray_color(const ray& r) {
     bool hitObject = false;
     bool drawObject = false;
     color shadowColor;
+    color reflectionColor = color(0.0, 0.0, 0.0);
     for (unsigned int i = 0; i < scene.objects.size(); i++) {
 
         auto object= scene.objects.at(i);
@@ -37,6 +41,9 @@ color ray_color(const ray& r) {
             isInShadow = true;
             return color(0.0,0.0,0.0);
         }
+//        if (hitObject && r.reflectionRay()) {
+//            return scene.objects[i]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor);
+//        }
         if (hitObject && !r.shadowRay()){
             if (object->getT() < minT){
                 minT = object->getT();
@@ -44,6 +51,8 @@ color ray_color(const ray& r) {
             }
         }
     }
+
+//    auto closestObject= scene.objects[indexMinT];
 
     if (drawObject) {
         vec3 offset = scene.objects[indexMinT]->getNormal() * 0.0001;
@@ -54,13 +63,39 @@ color ray_color(const ray& r) {
         shadowColor = ray_color(shadowRay);
     }
 
+    if (drawObject && scene.objects[indexMinT]->getRefl() > 0 && currentReflectionDepth < maxReflectionDepth) {
+        currentReflectionDepth++;
+
+        vec3 normal = scene.objects[indexMinT]->getNormal();
+        vec3 offset = normal * 0.0001;
+        vec3 reflectionRayOrigin = r.at(scene.objects[indexMinT]->getT()) + offset;
+
+        double n_dot_l;
+        if (scene.objects[indexMinT]->getType() == "sphere"){
+            n_dot_l = max(dot(normal, unit_vector(scene.directionToLight)), 0.0);
+        }
+        else {
+            n_dot_l = dot(normal, unit_vector(scene.directionToLight));
+        }
+
+        vec3 reflectionRayDirection = unit_vector((2 * n_dot_l * normal) - unit_vector(scene.directionToLight));
+
+        ray reflectionRay(reflectionRayOrigin, reflectionRayDirection);
+        reflectionRay.setIsReflectionRay(true);
+        reflectionColor += ray_color(reflectionRay);
+        currentReflectionDepth--;
+
+    }
+
     if (drawObject && isInShadow){
         isInShadow = false;
         return shadowColor;
     }
 
     if (drawObject && !r.shadowRay()){
-        return scene.objects[indexMinT]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor);
+        color pixelColor = scene.objects[indexMinT]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor) +
+               reflectionColor * scene.objects[indexMinT]->getRefl();
+        return pixelColor;
     }
 
     return color(scene.backgroundColor);
@@ -121,6 +156,11 @@ int main() {
 
             color pixel_color = ray_color(r);
             write_color(cout, pixel_color);
+
+            returns++;
+            if (returns == 129){
+                int yell;
+            }
         }
     }
 

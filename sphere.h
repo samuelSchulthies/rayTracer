@@ -53,6 +53,15 @@ public:
         return normal;
     }
 
+    virtual double getRefl() override {
+        return Refl;
+    }
+
+    virtual string getType() override {
+        return type;
+    }
+
+
     bool hit(const ray& r) override {
         vec3 rayToSphere = center - r.origin();
         auto a = dot(r.direction(), r.direction());
@@ -66,7 +75,7 @@ public:
             return false;
         }
 
-        if (!r.shadowRay()) {
+        if (!r.shadowRay() && !r.reflectionRay()) {
             t = tFromHit;
             normal = unit_vector(r.at(t) - center);
         }
@@ -78,7 +87,7 @@ public:
         return false;
     }
 
-    vec3 computePhong(const ray& ray, vec3 directionToLight, vec3 ambientLight, vec3 lightColor) {
+    vec3 computePhong(const ray& ray, vec3 directionToLight, vec3 ambientLight, vec3 lightColor) override {
         // uncomment to check normals
 //        return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);
 
@@ -109,4 +118,5 @@ private:
     double Refl;
     double t;
     vec3 normal;
+    string type = "sphere";
 };
