@@ -15,17 +15,16 @@ bool isInShadow = false;
 
 color ray_color(const ray& r) {
     auto objects = scene.objects;
-
     // loop over every object in the scene (triangles, spheres)
     unsigned int indexMinT = 0;
     double minT = numeric_limits<double>::infinity();
 
     bool hitObject = false;
     bool drawObject = false;
+    color shadowColor;
     for (unsigned int i = 0; i < scene.objects.size(); i++) {
 
         auto object= scene.objects.at(i);
-        color shadowColor;
 
         if (scene.objects[i]->hit(r)) {
             drawObject = true;
@@ -34,21 +33,9 @@ color ray_color(const ray& r) {
         else {
             hitObject = false;
         }
-        if (hitObject && !r.shadowRay()){
-            vec3 offset = object->getNormal() * 0.0001;
-            vec3 shadowRayOrigin = r.at(object->getT()) + offset;
-            vec3 shadowRayDirection = unit_vector(scene.directionToLight); // only subtract from ray hit if point light
-            ray shadowRay(shadowRayOrigin, shadowRayDirection);
-            shadowRay.setIsShadowRay(true);
-            shadowColor = ray_color(shadowRay);
-        }
         if (hitObject && r.shadowRay()) {
             isInShadow = true;
             return color(0.0,0.0,0.0);
-        }
-        if (hitObject && isInShadow) {
-            isInShadow = false;
-            return shadowColor;
         }
         if (hitObject && !r.shadowRay()){
             if (object->getT() < minT){
@@ -58,7 +45,21 @@ color ray_color(const ray& r) {
         }
     }
 
-    if (drawObject && !r.shadowRay()){ // TODO: return based on minimum T, use i to reference object
+    if (drawObject) {
+        vec3 offset = scene.objects[indexMinT]->getNormal() * 0.0001;
+        vec3 shadowRayOrigin = r.at(scene.objects[indexMinT]->getT()) + offset;
+        vec3 shadowRayDirection = unit_vector(scene.directionToLight); // only subtract from ray hit if point light
+        ray shadowRay(shadowRayOrigin, shadowRayDirection);
+        shadowRay.setIsShadowRay(true);
+        shadowColor = ray_color(shadowRay);
+    }
+
+    if (drawObject && isInShadow){
+        isInShadow = false;
+        return shadowColor;
+    }
+
+    if (drawObject && !r.shadowRay()){
         return scene.objects[indexMinT]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor);
     }
 
