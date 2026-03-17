@@ -25,7 +25,7 @@ color ray_color(const ray& r) {
     bool hitObject = false;
     bool drawObject = false;
     color shadowColor;
-    color reflectionColor = color(0.0, 0.0, 0.0);
+    color reflectionColor;
     for (unsigned int i = 0; i < scene.objects.size(); i++) {
 
         auto object= scene.objects.at(i);
@@ -54,16 +54,16 @@ color ray_color(const ray& r) {
 
 //    auto closestObject= scene.objects[indexMinT];
 
-    if (drawObject) {
+    if (drawObject && !r.reflectionRay()) {
         vec3 offset = scene.objects[indexMinT]->getNormal() * 0.0001;
         vec3 shadowRayOrigin = r.at(scene.objects[indexMinT]->getT()) + offset;
         vec3 shadowRayDirection = unit_vector(scene.directionToLight); // only subtract from ray hit if point light
         ray shadowRay(shadowRayOrigin, shadowRayDirection);
         shadowRay.setIsShadowRay(true);
-        shadowColor = ray_color(shadowRay);
+//        shadowColor = ray_color(shadowRay);
     }
 
-    if (drawObject && scene.objects[indexMinT]->getRefl() > 0 && currentReflectionDepth < maxReflectionDepth) {
+    if (drawObject && scene.objects[indexMinT]->getRefl() > 0 && currentReflectionDepth < maxReflectionDepth && !r.shadowRay()) {
         currentReflectionDepth++;
 
         vec3 normal = scene.objects[indexMinT]->getNormal();
@@ -78,7 +78,10 @@ color ray_color(const ray& r) {
             n_dot_l = dot(normal, unit_vector(scene.directionToLight));
         }
 
-        vec3 reflectionRayDirection = unit_vector((2 * n_dot_l * normal) - unit_vector(scene.directionToLight));
+//        vec3 reflectionRayDirection = unit_vector((2 * n_dot_l * normal) - unit_vector(scene.directionToLight));
+        vec3 reflectionRayDirection = unit_vector(r.direction() - 2 * normal * dot(r.direction(), normal));
+//        vec3 D = unit_vector(r.direction());
+//        vec3 reflectionRayDirection = unit_vector(D - 2 * dot(D, normal) * normal);
 
         ray reflectionRay(reflectionRayOrigin, reflectionRayDirection);
         reflectionRay.setIsReflectionRay(true);

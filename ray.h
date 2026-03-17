@@ -38,6 +38,6 @@ public:
 private:
     point3 orig;
     vec3 dir;
-    bool isShadowRay;
-    bool isReflectionRay;
+    bool isShadowRay = false;
+    bool isReflectionRay = false;
 };
