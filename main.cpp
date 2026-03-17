@@ -63,6 +63,11 @@ color ray_color(const ray& r) {
 //        shadowColor = ray_color(shadowRay);
     }
 
+    if (drawObject && isInShadow && scene.objects[indexMinT]->getRefl() == 0){
+        isInShadow = false;
+        return shadowColor;
+    }
+
     if (drawObject && scene.objects[indexMinT]->getRefl() > 0 && currentReflectionDepth < maxReflectionDepth && !r.shadowRay()) {
         currentReflectionDepth++;
 
@@ -80,8 +85,6 @@ color ray_color(const ray& r) {
 
 //        vec3 reflectionRayDirection = unit_vector((2 * n_dot_l * normal) - unit_vector(scene.directionToLight));
         vec3 reflectionRayDirection = unit_vector(r.direction() - 2 * normal * dot(r.direction(), normal));
-//        vec3 D = unit_vector(r.direction());
-//        vec3 reflectionRayDirection = unit_vector(D - 2 * dot(D, normal) * normal);
 
         ray reflectionRay(reflectionRayOrigin, reflectionRayDirection);
         reflectionRay.setIsReflectionRay(true);
@@ -90,10 +93,9 @@ color ray_color(const ray& r) {
 
     }
 
-    if (drawObject && isInShadow){
-        isInShadow = false;
-        return shadowColor;
-    }
+//    if (r.reflectionRay()){
+//        return color(1.0, 0.0, 0.0) * scene.objects[indexMinT]->getRefl();
+//    }
 
     if (drawObject && !r.shadowRay()){
         color pixelColor = scene.objects[indexMinT]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor) +

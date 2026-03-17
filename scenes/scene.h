@@ -54,3 +54,4 @@ scene threeSpheres();
 scene spiralSpheres();
 
 scene fushigi();
+scene penetration();
