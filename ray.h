@@ -23,12 +23,21 @@ public:
         return isShadowRay;
     }
 
+    bool reflectionRay() const {
+        return isReflectionRay;
+    }
+
     void setIsShadowRay(bool shadow){
         isShadowRay = shadow;
+    }
+
+    void setIsReflectionRay(bool reflection){
+        isReflectionRay = reflection;
     }
 
 private:
     point3 orig;
     vec3 dir;
     bool isShadowRay;
+    bool isReflectionRay;
 };

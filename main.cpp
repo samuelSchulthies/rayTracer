@@ -5,6 +5,7 @@
 #include "scenes/scene.h"
 
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -16,18 +17,27 @@ color ray_color(const ray& r) {
     auto objects = scene.objects;
 
     // loop over every object in the scene (triangles, spheres)
+    unsigned int indexMinT = 0;
+    double minT = numeric_limits<double>::infinity();
+
+    bool hitObject = false;
+    bool drawObject = false;
     for (unsigned int i = 0; i < scene.objects.size(); i++) {
+
         auto object= scene.objects.at(i);
         color shadowColor;
-        bool hitObject = false;
+
         if (scene.objects[i]->hit(r)) {
+            drawObject = true;
             hitObject = true;
+        }
+        else {
+            hitObject = false;
         }
         if (hitObject && !r.shadowRay()){
             vec3 offset = object->getNormal() * 0.0001;
             vec3 shadowRayOrigin = r.at(object->getT()) + offset;
             vec3 shadowRayDirection = unit_vector(scene.directionToLight); // only subtract from ray hit if point light
-            double test = dot(object->getNormal(), shadowRayDirection);
             ray shadowRay(shadowRayOrigin, shadowRayDirection);
             shadowRay.setIsShadowRay(true);
             shadowColor = ray_color(shadowRay);
@@ -36,14 +46,22 @@ color ray_color(const ray& r) {
             isInShadow = true;
             return color(0.0,0.0,0.0);
         }
-        if (hitObject && isInShadow){
+        if (hitObject && isInShadow) {
             isInShadow = false;
             return shadowColor;
         }
-        if (hitObject && !isInShadow && !r.shadowRay()){
-            return scene.objects[i]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor);
+        if (hitObject && !r.shadowRay()){
+            if (object->getT() < minT){
+                minT = object->getT();
+                indexMinT = i;
+            }
         }
     }
+
+    if (drawObject && !r.shadowRay()){ // TODO: return based on minimum T, use i to reference object
+        return scene.objects[indexMinT]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor);
+    }
+
     return color(scene.backgroundColor);
 }
 

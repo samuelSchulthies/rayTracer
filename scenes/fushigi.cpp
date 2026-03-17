@@ -4,7 +4,7 @@ scene fushigi() {
 
     vector<hittable*> objects;
 
-    objects.push_back(new sphere({0.0, 0.3, -1.0},
+    objects.push_back(new sphere({0.0, -0.8, -1.0},
                        0.25,
                        0.9,
                        0.1,

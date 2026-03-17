@@ -62,7 +62,7 @@ public:
 
         double tFromHit = (-b - sqrt(discriminant)) / (2.0 * a);
 
-        if (tFromHit < 0){
+        if (tFromHit <= 0){
             return false;
         }
 
