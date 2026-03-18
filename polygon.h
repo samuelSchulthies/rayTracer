@@ -48,12 +48,19 @@ public:
         return normal;
     }
 
-    virtual double getRefl() override {
+    double getRefl() override {
         return Refl;
     }
 
-    virtual string getType() override {
+    string getType() override {
         return type;
+    }
+
+    double getCurrentT() override {
+        return currentT;
+    }
+    vec3 getCurrentNorm () override {
+        return currentNorm;
     }
 
 
@@ -98,6 +105,8 @@ private:
     double Kgls;
     double Refl;
     double t;
+    double currentT;
+    vec3 currentNorm;
     vec3 normal;
     string type = "polygon";
 
@@ -115,6 +124,7 @@ private:
         if (!r.shadowRay() && !r.reflectionRay()) {
             normal = planeNormal;
         }
+        currentNorm = planeNormal;
 
         // get plane intersection
         double d = -(vertices[0].x() * planeNormal.x() + vertices[0].y() * planeNormal.y() + vertices[0].z() * planeNormal.z());
@@ -130,6 +140,7 @@ private:
         if (!r.shadowRay() && !r.reflectionRay()) {
             t = intersection;
         }
+        currentT = intersection;
 
         // If intersection is behind ray, don't draw face
         if (intersection <= 0){
