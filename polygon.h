@@ -76,17 +76,12 @@ public:
     }
 
     bool hit(const ray& r) override {
-        tuple<bool, double, vec3> hitPoly = hitPolygon(r);
-        bool numCrossings = get<0>(hitPoly);
+        bool hitPoly = hitPolygon(r);
 
-        if (!r.shadowRay() && !r.reflectionRay()) {
-            t = get<1>(hitPoly);
-            normal = get<2>(hitPoly);
-        }
         if (t <= 0) {
             return false;
         }
-        if (numCrossings) {
+        if (hitPoly) {
             return true;
         }
         return false;
@@ -106,7 +101,7 @@ private:
     vec3 normal;
     string type = "polygon";
 
-    tuple<bool, double, vec3> hitPolygon(const ray& r) const {
+    bool hitPolygon(const ray& r) {
         int numCrossings = 0;
         int signHolder = 0;
         int nextSignHolder = 0;
@@ -117,6 +112,9 @@ private:
 
         // get plane normal
         vec3 planeNormal = unit_vector(cross(vector1, vector2));
+        if (!r.shadowRay() && !r.reflectionRay()) {
+            normal = planeNormal;
+        }
 
         // get plane intersection
         double d = -(vertices[0].x() * planeNormal.x() + vertices[0].y() * planeNormal.y() + vertices[0].z() * planeNormal.z());
@@ -124,16 +122,21 @@ private:
 
         // if ray is parallel or normal is pointing away, cull face. Excludes shadow rays
         if (planeDotRay >= 0 && !r.shadowRay()){
-            return tuple<bool, double, vec3>{false, 0, planeNormal};
+            return false;
         }
-        double t = -(dot(planeNormal, r.origin()) + d) / planeDotRay;
+
+        double intersection = -(dot(planeNormal, r.origin()) + d) / planeDotRay;
+
+        if (!r.shadowRay() && !r.reflectionRay()) {
+            t = intersection;
+        }
 
         // If intersection is behind ray, don't draw face
         if (t <= 0){
-            return tuple<bool, double, vec3>{false, t, planeNormal};
+            return false;
         }
 
-        vec3 P = r.at(t);
+        vec3 P = r.at(intersection);
 
         vec3 edge0 = vertices[1] - vertices[0];
         vec3 edge1 = vertices[2] - vertices[1];
@@ -146,10 +149,10 @@ private:
         if(dot(planeNormal, cross(edge0, C0)) > 0 &&
            dot(planeNormal, cross(edge1, C1)) > 0 &&
            dot(planeNormal, cross(edge2, C2)) > 0) {
-            return tuple<bool, double, vec3>{true, t, planeNormal};
+            return true;
         }
         else {
-            return tuple<bool, double, vec3>{false, t, planeNormal};
+            return false;
         }
     }
 
@@ -167,7 +170,7 @@ private:
 //        for (unsigned int i = 0; i < vertices.size(); i++) {
 //            projectedVertices.push_back(get<0>(dominantProjection(vertices.at(i), dominantAxis)));
 //        }
-//        vec2 projectedRay = get<0>(dominantProjection(r.at(t), dominantAxis));
+//        vec2 projectedRay = get<0>(dominantProjection(r.at(intersection), dominantAxis));
 //
 //        // translate vertices and ray by -ray
 //        vector<vec2> translatedVertices;
@@ -221,7 +224,7 @@ private:
 //            }
 //            signHolder = nextSignHolder;
 //        }
-//        return tuple<int, double, vec3>{numCrossings, t, planeNormal};
+//        return tuple<int, double, vec3>{numCrossings, intersection, planeNormal};
 //    }
 
 

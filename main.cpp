@@ -9,7 +9,7 @@
 
 using namespace std;
 
-scene scene = penetration();
+scene scene = fushigi();
 
 bool isInShadow = false;
 int maxReflectionDepth = 3;
@@ -47,6 +47,22 @@ color ray_color(const ray& r) {
                 indexMinT = i;
             }
         }
+//        if (hitObject && scene.objects[i]->getRefl() > 0 && currentReflectionDepth < maxReflectionDepth && !r.shadowRay()) {
+//            currentReflectionDepth++;
+//
+//            vec3 normal = scene.objects[i]->getNormal();
+//            vec3 offset = normal * 0.001;
+//            vec3 reflectionRayOrigin = r.at(scene.objects[i]->getT()) + offset;
+//
+//            vec3 reflectionRayDirection = unit_vector(unit_vector(r.direction()) - (2 * normal * dot(unit_vector(r.direction()), normal)));
+//
+//            ray reflectionRay(reflectionRayOrigin, reflectionRayDirection);
+//            reflectionRay.setIsReflectionRay(true);
+//            reflectionColor = ray_color(reflectionRay);
+//
+//            currentReflectionDepth--;
+//
+//        }
     }
 
 //    auto closestObject= scene.objects[indexMinT];
@@ -57,7 +73,7 @@ color ray_color(const ray& r) {
         vec3 shadowRayDirection = unit_vector(scene.directionToLight); // only subtract from ray hit if point light
         ray shadowRay(shadowRayOrigin, shadowRayDirection);
         shadowRay.setIsShadowRay(true);
-        shadowColor = ray_color(shadowRay); // TODO: reflection ray most likely problem. Could be shadow ray interfering. Clamp values
+//        shadowColor = ray_color(shadowRay); // TODO: reflection ray most likely problem. Could be shadow ray interfering.
     }
 
     if (drawObject && isInShadow && scene.objects[indexMinT]->getRefl() == 0){
@@ -76,7 +92,7 @@ color ray_color(const ray& r) {
 
         ray reflectionRay(reflectionRayOrigin, reflectionRayDirection);
         reflectionRay.setIsReflectionRay(true);
-//        reflectionColor = ray_color(reflectionRay);
+        reflectionColor = ray_color(reflectionRay);
 
         currentReflectionDepth--;
 
