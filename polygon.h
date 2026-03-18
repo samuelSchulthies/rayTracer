@@ -64,14 +64,14 @@ public:
     }
 
 
-    vec3 computePhong(const ray& r, vec3 directionToLight, vec3 ambientLight, vec3 lightColor) override {
+    vec3 computePhong(const ray& r, vec3 directionToLight, vec3 ambientLight, vec3 lightColor, double newT, vec3 newNorm) override {
         // uncomment to check normals
 //        return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);
 
-        vec3 directionToCamera = unit_vector(r.origin() - r.at(t));
+        vec3 directionToCamera = unit_vector(r.origin() - r.at(newT));
 
-        double n_dot_l = dot(normal, unit_vector(directionToLight));
-        vec3 reflection = unit_vector((2 * n_dot_l * normal) - unit_vector(directionToLight));
+        double n_dot_l = dot(newNorm, unit_vector(directionToLight));
+        vec3 reflection = unit_vector((2 * n_dot_l * newNorm) - unit_vector(directionToLight));
 
         vec3 ambient = Ka * ambientLight * Od;
         vec3 diffuse = Kd * lightColor * Od * n_dot_l;
@@ -140,7 +140,10 @@ private:
         if (!r.shadowRay() && !r.reflectionRay()) {
             t = intersection;
         }
-        currentT = intersection;
+
+        double currentPlaneDotRay = dot(currentNorm, r.direction());
+        double currentD = -(vertices[0].x() * currentNorm.x() + vertices[0].y() * currentNorm.y() + vertices[0].z() * currentNorm.z());
+        currentT = -(dot(currentNorm, r.origin()) + currentD) / currentPlaneDotRay;
 
         // If intersection is behind ray, don't draw face
         if (intersection <= 0){

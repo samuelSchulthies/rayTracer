@@ -46,14 +46,14 @@ color ray_color(const ray& r) {
             return color(0.0,0.0,0.0);
         }
         if (hitObject && !r.shadowRay()){
-            if (object->getT() < minT){
-                minT = object->getT();
+            if (object->getCurrentT() < minT){
+                minT = object->getCurrentT();
                 indexMinT = i;
             }
         }
     }
 
-    if (drawObject && scene.objects[indexMinT]->getRefl() == 0) {
+    if (drawObject && scene.objects[indexMinT]->getRefl() == 0 && !r.shadowRay()) {
         vec3 offset = currentNormal * 0.001;
         vec3 shadowRayOrigin = r.at(currentT) + offset;
         vec3 shadowRayDirection = unit_vector(scene.directionToLight); // only subtract from ray hit if point light
@@ -88,9 +88,14 @@ color ray_color(const ray& r) {
 //    }
 
 
-    if (drawObject && !r.shadowRay()){
-        color pixelColor = scene.objects[indexMinT]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor) +
+    if (drawObject && !r.shadowRay() && r.reflectionRay()){
+        color pixelColor = scene.objects[indexMinT]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor, currentT, currentNormal) +
                reflectionColor * scene.objects[indexMinT]->getRefl();
+        return pixelColor;
+    }
+    if (drawObject && !r.shadowRay() && !r.reflectionRay()){
+        color pixelColor = scene.objects[indexMinT]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor, currentT, currentNormal) +
+                           reflectionColor * scene.objects[indexMinT]->getRefl();
         return pixelColor;
     }
     return color(scene.backgroundColor);
