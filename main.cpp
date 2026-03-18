@@ -68,12 +68,12 @@ color ray_color(const ray& r) {
 //    auto closestObject= scene.objects[indexMinT];
 
     if (drawObject && !r.reflectionRay()) {
-        vec3 offset = scene.objects[indexMinT]->getNormal() * 0.0001;
+        vec3 offset = scene.objects[indexMinT]->getNormal() * 0.001;
         vec3 shadowRayOrigin = r.at(scene.objects[indexMinT]->getT()) + offset;
         vec3 shadowRayDirection = unit_vector(scene.directionToLight); // only subtract from ray hit if point light
         ray shadowRay(shadowRayOrigin, shadowRayDirection);
         shadowRay.setIsShadowRay(true);
-//        shadowColor = ray_color(shadowRay); // TODO: reflection ray most likely problem. Could be shadow ray interfering.
+        shadowColor = ray_color(shadowRay);
     }
 
     if (drawObject && isInShadow && scene.objects[indexMinT]->getRefl() == 0){
@@ -120,7 +120,7 @@ int main() {
     of a pixel
      */
     auto aspect_ratio = 1.0 / 1.0;
-    int image_width = 500;
+    int image_width = 50;
 
     // calculate image height and ensure it is 1 or greater
     int image_height = int(image_width / aspect_ratio);

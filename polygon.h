@@ -132,7 +132,7 @@ private:
         }
 
         // If intersection is behind ray, don't draw face
-        if (t <= 0){
+        if (intersection <= 0){
             return false;
         }
 
