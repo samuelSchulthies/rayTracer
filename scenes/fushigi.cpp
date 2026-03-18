@@ -3,16 +3,17 @@
 scene fushigi() {
 
     vector<hittable*> objects;
-
+    // reflective sphere
     objects.push_back(new sphere({0.0, 0.3, -1.0},
                        0.25,
-                       0.9,
+                       0.0,
                        0.1,
                        0.1,
                        {0.75, 0.75, 0.75},
                        {1.0, 1.0, 1.0},
                        10.0,
                        0.9));
+    // blue triangle
     objects.push_back(new polygon({{0.0, -0.7, -0.5},
                          {1.0, 0.4, -1.0},
                          {0.0, -0.7, -1.5}},
@@ -23,6 +24,7 @@ scene fushigi() {
                          {1.0, 1.0, 1.0},
                          4.0,
                          0.0));
+    // yellow triangle
     objects.push_back( new polygon({{0.0, -0.7, -0.5},
                           {0.0, -0.7, -1.5},
                           {-1.0, 0.4, -1.0}},

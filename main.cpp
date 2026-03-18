@@ -9,7 +9,7 @@
 
 using namespace std;
 
-scene scene = fushigi();
+scene scene = penetration();
 
 bool isInShadow = false;
 int maxReflectionDepth = 3;
@@ -41,9 +41,6 @@ color ray_color(const ray& r) {
             isInShadow = true;
             return color(0.0,0.0,0.0);
         }
-//        if (hitObject && r.reflectionRay()) {
-//            return scene.objects[i]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor);
-//        }
         if (hitObject && !r.shadowRay()){
             if (object->getT() < minT){
                 minT = object->getT();
@@ -60,7 +57,7 @@ color ray_color(const ray& r) {
         vec3 shadowRayDirection = unit_vector(scene.directionToLight); // only subtract from ray hit if point light
         ray shadowRay(shadowRayOrigin, shadowRayDirection);
         shadowRay.setIsShadowRay(true);
-//        shadowColor = ray_color(shadowRay);
+        shadowColor = ray_color(shadowRay); // TODO: reflection ray most likely problem. Could be shadow ray interfering. Clamp values
     }
 
     if (drawObject && isInShadow && scene.objects[indexMinT]->getRefl() == 0){
@@ -72,29 +69,21 @@ color ray_color(const ray& r) {
         currentReflectionDepth++;
 
         vec3 normal = scene.objects[indexMinT]->getNormal();
-        vec3 offset = normal * 0.0001;
+        vec3 offset = normal * 0.001;
         vec3 reflectionRayOrigin = r.at(scene.objects[indexMinT]->getT()) + offset;
 
-        double n_dot_l;
-        if (scene.objects[indexMinT]->getType() == "sphere"){
-            n_dot_l = max(dot(normal, unit_vector(scene.directionToLight)), 0.0);
-        }
-        else {
-            n_dot_l = dot(normal, unit_vector(scene.directionToLight));
-        }
-
-//        vec3 reflectionRayDirection = unit_vector((2 * n_dot_l * normal) - unit_vector(scene.directionToLight));
-        vec3 reflectionRayDirection = unit_vector(r.direction() - 2 * normal * dot(r.direction(), normal));
+        vec3 reflectionRayDirection = unit_vector(unit_vector(r.direction()) - (2 * normal * dot(unit_vector(r.direction()), normal)));
 
         ray reflectionRay(reflectionRayOrigin, reflectionRayDirection);
         reflectionRay.setIsReflectionRay(true);
-        reflectionColor += ray_color(reflectionRay);
+//        reflectionColor = ray_color(reflectionRay);
+
         currentReflectionDepth--;
 
     }
 
 //    if (r.reflectionRay()){
-//        return color(1.0, 0.0, 0.0) * scene.objects[indexMinT]->getRefl();
+//        return color(0.0, 1.0, 0.0) * scene.objects[indexMinT]->getRefl();
 //    }
 
     if (drawObject && !r.shadowRay()){

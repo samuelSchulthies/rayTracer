@@ -76,8 +76,8 @@ public:
     }
 
     bool hit(const ray& r) override {
-        tuple<int, double, vec3> hitPoly = hitPolygon(r);
-        int numCrossings = get<0>(hitPoly);
+        tuple<bool, double, vec3> hitPoly = hitPolygon(r);
+        bool numCrossings = get<0>(hitPoly);
 
         if (!r.shadowRay() && !r.reflectionRay()) {
             t = get<1>(hitPoly);
@@ -86,7 +86,7 @@ public:
         if (t <= 0) {
             return false;
         }
-        if (numCrossings % 2 != 0) {
+        if (numCrossings) {
             return true;
         }
         return false;
@@ -106,7 +106,7 @@ private:
     vec3 normal;
     string type = "polygon";
 
-    tuple<int, double, vec3> hitPolygon(const ray& ray) const {
+    tuple<bool, double, vec3> hitPolygon(const ray& r) const {
         int numCrossings = 0;
         int signHolder = 0;
         int nextSignHolder = 0;
@@ -120,88 +120,109 @@ private:
 
         // get plane intersection
         double d = -(vertices[0].x() * planeNormal.x() + vertices[0].y() * planeNormal.y() + vertices[0].z() * planeNormal.z());
-        auto planeDotRay = dot(planeNormal, ray.direction());
+        auto planeDotRay = dot(planeNormal, r.direction());
 
         // if ray is parallel or normal is pointing away, cull face. Excludes shadow rays
-        if (planeDotRay >= 0 && !ray.shadowRay()){
-            return tuple<int, double, vec3>{numCrossings, 0, planeNormal};
+        if (planeDotRay >= 0 && !r.shadowRay()){
+            return tuple<bool, double, vec3>{false, 0, planeNormal};
         }
-        double t = -(dot(planeNormal, ray.origin()) + d) / planeDotRay;
+        double t = -(dot(planeNormal, r.origin()) + d) / planeDotRay;
 
         // If intersection is behind ray, don't draw face
         if (t <= 0){
-            return tuple<int, double, vec3>{numCrossings, t, planeNormal};
+            return tuple<bool, double, vec3>{false, t, planeNormal};
         }
+
+        vec3 P = r.at(t);
+
+        vec3 edge0 = vertices[1] - vertices[0];
+        vec3 edge1 = vertices[2] - vertices[1];
+        vec3 edge2 = vertices[0] - vertices[2];
+
+        vec3 C0 = P - vertices[0];
+        vec3 C1 = P - vertices[1];
+        vec3 C2 = P - vertices[2];
+
+        if(dot(planeNormal, cross(edge0, C0)) > 0 &&
+           dot(planeNormal, cross(edge1, C1)) > 0 &&
+           dot(planeNormal, cross(edge2, C2)) > 0) {
+            return tuple<bool, double, vec3>{true, t, planeNormal};
+        }
+        else {
+            return tuple<bool, double, vec3>{false, t, planeNormal};
+        }
+    }
+
 
 //    if(vertices.size() == 3){
 //        return hitTri(vertices, ray, vector1, vector2);
 //    }
 
-        // get dominant axis
-        tuple<vec2, char> dominant = dominantProjection(planeNormal, 0);
-        char dominantAxis = get<1>(dominant);
-
-        // project vertices and ray to dominant axis
-        vector<vec2> projectedVertices;
-        for (unsigned int i = 0; i < vertices.size(); i++) {
-            projectedVertices.push_back(get<0>(dominantProjection(vertices.at(i), dominantAxis)));
-        }
-        vec2 projectedRay = get<0>(dominantProjection(ray.at(t), dominantAxis));
-
-        // translate vertices and ray by -ray
-        vector<vec2> translatedVertices;
-        vec2 translation = projectedRay;
-        for (unsigned int i = 0; i < projectedVertices.size(); i++) {
-            translatedVertices.push_back(projectedVertices.at(i) - translation);
-        }
-//    vec2 translatedRay = projectedRay - translation;
-
-
-        // set initial sign holder and num crossings
-        numCrossings = 0;
-        if(translatedVertices.at(0).v() < 0){
-            signHolder = -1;
-        }
-        else {
-            signHolder = 1;
-        }
-
-        // loop over vertices
-        for(unsigned int i = 0; i < translatedVertices.size(); i++){
-            int i_1;
-            if (i == translatedVertices.size() - 1){
-                i_1 = 0;
-            }
-            else{
-                i_1 = i + 1;
-            }
-
-            if(translatedVertices.at(i_1).v() < 0){
-                nextSignHolder = -1;
-            }
-            else {
-                nextSignHolder = 1;
-            }
-            if(signHolder != nextSignHolder){
-                // crosses +U
-                if ((translatedVertices.at(i).u() > 0) && (translatedVertices.at(i_1).u() > 0)){
-                    numCrossings += 1;
-                }
-                    // might cross +U
-                else if ((translatedVertices.at(i).u() > 0) || (translatedVertices.at(i_1).u() > 0)){
-                    double ucross = translatedVertices.at(i).u() - translatedVertices.at(i).v() *
-                            ((translatedVertices.at(i_1).u() - translatedVertices.at(i).u()) /
-                            (translatedVertices.at(i_1).v() - translatedVertices.at(i).v()));
-                    // crosses +U so increment
-                    if (ucross > 0){
-                        numCrossings += 1;
-                    }
-                }
-            }
-            signHolder = nextSignHolder;
-        }
-        return tuple<int, double, vec3>{numCrossings, t, planeNormal};
-    }
+//        // get dominant axis
+//        tuple<vec2, char> dominant = dominantProjection(planeNormal, 0);
+//        char dominantAxis = get<1>(dominant);
+//
+//        // project vertices and ray to dominant axis
+//        vector<vec2> projectedVertices;
+//        for (unsigned int i = 0; i < vertices.size(); i++) {
+//            projectedVertices.push_back(get<0>(dominantProjection(vertices.at(i), dominantAxis)));
+//        }
+//        vec2 projectedRay = get<0>(dominantProjection(r.at(t), dominantAxis));
+//
+//        // translate vertices and ray by -ray
+//        vector<vec2> translatedVertices;
+//        vec2 translation = projectedRay;
+//        for (unsigned int i = 0; i < projectedVertices.size(); i++) {
+//            translatedVertices.push_back(projectedVertices.at(i) - translation);
+//        }
+////    vec2 translatedRay = projectedRay - translation;
+//
+//
+//        // set initial sign holder and num crossings
+//        numCrossings = 0;
+//        if(translatedVertices.at(0).v() < 0){
+//            signHolder = -1;
+//        }
+//        else {
+//            signHolder = 1;
+//        }
+//
+//        // loop over vertices
+//        for(unsigned int i = 0; i < translatedVertices.size(); i++){
+//            int i_1;
+//            if (i == translatedVertices.size() - 1){
+//                i_1 = 0;
+//            }
+//            else{
+//                i_1 = i + 1;
+//            }
+//
+//            if(translatedVertices.at(i_1).v() < 0){
+//                nextSignHolder = -1;
+//            }
+//            else {
+//                nextSignHolder = 1;
+//            }
+//            if(signHolder != nextSignHolder){
+//                // crosses +U
+//                if ((translatedVertices.at(i).u() > 0) && (translatedVertices.at(i_1).u() > 0)){
+//                    numCrossings += 1;
+//                }
+//                    // might cross +U
+//                else if ((translatedVertices.at(i).u() > 0) || (translatedVertices.at(i_1).u() > 0)){
+//                    double ucross = translatedVertices.at(i).u() - translatedVertices.at(i).v() *
+//                            ((translatedVertices.at(i_1).u() - translatedVertices.at(i).u()) /
+//                            (translatedVertices.at(i_1).v() - translatedVertices.at(i).v()));
+//                    // crosses +U so increment
+//                    if (ucross > 0){
+//                        numCrossings += 1;
+//                    }
+//                }
+//            }
+//            signHolder = nextSignHolder;
+//        }
+//        return tuple<int, double, vec3>{numCrossings, t, planeNormal};
+//    }
 
 
 };
