@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/main.cpp" "CMakeFiles/rayTracer.dir/main.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/main.cpp.o.d"
+  "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/complex.cpp" "CMakeFiles/rayTracer.dir/scenes/complex.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/complex.cpp.o.d"
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/fushigi.cpp" "CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o.d"
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/magentaSphere.cpp" "CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o.d"
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/penetration.cpp" "CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o.d"

@@ -153,6 +153,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+scenes/complex.o: scenes/complex.cpp.o
+.PHONY : scenes/complex.o
+
+# target to build an object file
+scenes/complex.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/complex.cpp.o
+.PHONY : scenes/complex.cpp.o
+
+scenes/complex.i: scenes/complex.cpp.i
+.PHONY : scenes/complex.i
+
+# target to preprocess a source file
+scenes/complex.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/complex.cpp.i
+.PHONY : scenes/complex.cpp.i
+
+scenes/complex.s: scenes/complex.cpp.s
+.PHONY : scenes/complex.s
+
+# target to generate assembly for a file
+scenes/complex.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/complex.cpp.s
+.PHONY : scenes/complex.cpp.s
+
 scenes/fushigi.o: scenes/fushigi.cpp.o
 .PHONY : scenes/fushigi.o
 
@@ -285,6 +309,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... scenes/complex.o"
+	@echo "... scenes/complex.i"
+	@echo "... scenes/complex.s"
 	@echo "... scenes/fushigi.o"
 	@echo "... scenes/fushigi.i"
 	@echo "... scenes/fushigi.s"

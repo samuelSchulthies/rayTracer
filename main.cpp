@@ -9,7 +9,7 @@
 
 using namespace std;
 
-scene scene = fushigi();
+scene scene = complex();
 
 bool isInShadow = false;
 int maxReflectionDepth = 3;
