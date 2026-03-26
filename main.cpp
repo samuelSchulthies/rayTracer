@@ -6,15 +6,15 @@
 
 #include <iostream>
 #include <algorithm>
+#include <fstream>
 
 using namespace std;
 
-scene scene = penetration();
+scene scene = fushigi();
 
 bool isInShadow = false;
 int maxReflectionDepth = 3;
 int currentReflectionDepth = 0;
-int returns = 0;
 
 // TODO: notes from debugging thus far: consolidating ifs at the bottomg of ray_color breaks complex scene.
 // TODO:                                Spheres do not draw properly unless they are are pushed into vector in draw order
@@ -145,25 +145,27 @@ int main() {
     /*
 
      */
-    cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+    ofstream outputImage("../image.ppm");
 
-    for (int j = 0; j < image_height; j++){
+    if(!outputImage.is_open()){
+        cout << "Error opening output file";
+        return 0;
+    }
+
+    outputImage << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+
+    for (int j = 0; j < image_height; j++) {
         clog << "\rScanLines remaining: " << (image_height - j) << ' ' << flush;
-        for (int i = 0; i < image_width; i++){
+        for (int i = 0; i < image_width; i++) {
             auto pixel_center = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
             auto ray_direction = pixel_center - scene.cameraLookFrom;
             ray r(scene.cameraLookFrom, ray_direction);
 
             color pixel_color = ray_color(r);
-            write_color(cout, pixel_color);
-
-            returns++;
-            if (returns == 129){
-                int yell;
-            }
+            write_color(outputImage, pixel_color);
         }
     }
-
+    outputImage.close();
     clog << "\rDone.                   \n";
     //-----------------------------------------------------------------------------------------------------------------
 }

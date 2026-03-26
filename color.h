@@ -3,15 +3,17 @@
 #include "vec3.h"
 
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 using color = vec3;
 
-inline void write_color(ostream& out, const color& pixel_color) {
+inline void write_color(ofstream& image, const color& pixel_color) {
     auto r = pixel_color.x();
     auto g = pixel_color.y();
     auto b = pixel_color.z();
 
+    // clamp values
     if (pixel_color.x() > 1){
         r = 1;
     }
@@ -39,5 +41,6 @@ inline void write_color(ostream& out, const color& pixel_color) {
     int bbyte = int(255.999 * b);
 
     // write pixel color components
-    out << rbyte << ' ' << gbyte << ' ' << bbyte << '\n';
+
+    image << rbyte << ' ' << gbyte << ' ' << bbyte << '\n';
 }
