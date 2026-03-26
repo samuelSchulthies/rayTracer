@@ -964,6 +964,7 @@ CMakeFiles/rayTracer.dir/main.cpp.o: /Users/samuelschulthies/CLionProjects/cs455
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec2.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h \
@@ -1932,6 +1933,7 @@ CMakeFiles/rayTracer.dir/scenes/complex.cpp.o: /Users/samuelschulthies/CLionProj
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec2.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h \
@@ -2898,6 +2900,7 @@ CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o: /Users/samuelschulthies/CLionProj
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec2.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h \
@@ -3864,6 +3867,7 @@ CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o: /Users/samuelschulthies/CLi
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec2.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h \
@@ -4830,6 +4834,7 @@ CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o: /Users/samuelschulthies/CLion
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec2.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h \
@@ -5796,6 +5801,7 @@ CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o: /Users/samuelschulthies/CLi
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec2.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h \
@@ -6762,6 +6768,7 @@ CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o: /Users/samuelschulthies/CLio
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec2.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec3.h \
@@ -6779,6 +6786,8 @@ CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o: /Users/samuelschulthies/CLio
 /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec2.h:
 
 /Users/samuelschulthies/CLionProjects/cs455/rayTracer/sphere.h:
+
+/Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h:
 
 /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h:
 

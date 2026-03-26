@@ -3,6 +3,7 @@
 #include "vec3.h"
 #include "ray.h"
 #include "hittable.h"
+#include "shading.h"
 
 #include <algorithm>
 
@@ -95,21 +96,8 @@ public:
         return false;
     }
 
-    vec3 computePhong(const ray& r, vec3 directionToLight, vec3 ambientLight, vec3 lightColor, double newT, vec3 newNorm) override {        // uncomment to check normals
-//        return 0.5*color(normal.x()+1, normal.y()+1, normal.z()+1);
-
-        vec3 directionToCamera = unit_vector(r.origin() - r.at(newT));
-
-        double n_dot_l = max(dot(newNorm, unit_vector(directionToLight)), 0.0);
-        vec3 reflection = unit_vector((2 * n_dot_l * newNorm) - unit_vector(directionToLight));
-
-        vec3 ambient = Ka * ambientLight * Od;
-        vec3 diffuse = Kd * lightColor * Od * n_dot_l;
-        vec3 specular = Ks * lightColor * Os * (pow(max(dot(directionToCamera, reflection), 0.0), Kgls));
-
-        vec3 lightTotal = ambient + diffuse + specular;
-
-        return color(lightTotal);
+    vec3 shade(const ray& r, vec3 directionToLight, vec3 ambientLight, vec3 lightColor, double newT, vec3 newNorm) override {
+        return shading().computePhong(type, r, directionToLight, ambientLight, lightColor, newT, newNorm, Kd, Ks, Ka, Od, Os, Kgls);
     }
 
 

@@ -9,12 +9,17 @@
 
 using namespace std;
 
-scene scene = complex();
+scene scene = penetration();
 
 bool isInShadow = false;
 int maxReflectionDepth = 3;
 int currentReflectionDepth = 0;
 int returns = 0;
+
+// TODO: notes from debugging thus far: consolidating ifs at the bottomg of ray_color breaks complex scene.
+// TODO:                                Spheres do not draw properly unless they are are pushed into vector in draw order
+// TODO:                                Blue sphere in threeSpheres breaks scene when pushed onto vector first
+
 
 color ray_color(const ray& r) {
     auto objects = scene.objects;
@@ -83,19 +88,14 @@ color ray_color(const ray& r) {
         currentReflectionDepth--;
     }
 
-//    if (r.reflectionRay()){
-//        return color(0.0, 1.0, 0.0) * scene.objects[indexMinT]->getRefl();
-//    }
-
-
     if (drawObject && !r.shadowRay() && r.reflectionRay()){
-        color pixelColor = scene.objects[indexMinT]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor, currentT, currentNormal) +
+        color pixelColor = scene.objects[indexMinT]->shade(r, scene.directionToLight, scene.ambientLight, scene.lightColor, currentT, currentNormal) +
                reflectionColor * scene.objects[indexMinT]->getRefl();
         return pixelColor;
     }
     if (drawObject && !r.shadowRay() && !r.reflectionRay()){
-        color pixelColor = scene.objects[indexMinT]->computePhong(r, scene.directionToLight, scene.ambientLight, scene.lightColor, currentT, currentNormal) +
-                           reflectionColor * scene.objects[indexMinT]->getRefl();
+        color pixelColor = scene.objects[indexMinT]->shade(r, scene.directionToLight, scene.ambientLight, scene.lightColor, currentT, currentNormal) +
+                reflectionColor * scene.objects[indexMinT]->getRefl();
         return pixelColor;
     }
     return color(scene.backgroundColor);

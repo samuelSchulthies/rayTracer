@@ -963,4 +963,5 @@ CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o: \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../hittable.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../vec2.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../color.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../shading.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../polygon.h
