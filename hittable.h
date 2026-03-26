@@ -16,8 +16,7 @@ public:
     virtual vec3 getNormal() = 0;
     virtual double getRefl() = 0;
     virtual string getType() = 0;
-    virtual double getCurrentT() = 0;
-    virtual vec3 getCurrentNorm() = 0;
+
 };
 
 //double hit(const point3& center, double radius, const ray& r);

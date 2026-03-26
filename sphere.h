@@ -61,12 +61,6 @@ public:
     virtual string getType() override {
         return type;
     }
-    double getCurrentT() override {
-        return currentT;
-    }
-    vec3 getCurrentNorm () override {
-        return currentNorm;
-    }
 
 
     bool hit(const ray& r) override {
@@ -82,12 +76,8 @@ public:
             return false;
         }
 
-        if (!r.shadowRay() && !r.reflectionRay()) {
-            t = tFromHit;
-            normal = unit_vector(r.at(t) - center);
-        }
-        currentT= tFromHit;
-        currentNorm = unit_vector(r.at(currentT) - center);
+        t = tFromHit;
+        normal = unit_vector(r.at(t) - center);
 
         if (discriminant >= 0){
             return true;
@@ -115,6 +105,4 @@ private:
     vec3 normal;
     string type = "sphere";
     bool isInShadow = false;
-    double currentT;
-    vec3 currentNorm;
 };

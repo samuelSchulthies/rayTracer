@@ -56,13 +56,6 @@ public:
         return type;
     }
 
-    double getCurrentT() override {
-        return currentT;
-    }
-    vec3 getCurrentNorm () override {
-        return currentNorm;
-    }
-
 
     vec3 shade(const ray& r, vec3 directionToLight, vec3 ambientLight, vec3 lightColor, double newT, vec3 newNorm) override {
         return shading().computePhong(type, r, directionToLight, ambientLight, lightColor, newT, newNorm, Kd, Ks, Ka, Od, Os, Kgls);
@@ -91,52 +84,32 @@ private:
     double Kgls;
     double Refl;
     double t;
-    double currentT;
-    vec3 currentNorm;
     vec3 normal;
     string type = "polygon";
 
     bool hitPolygon(const ray& r) {
-        int numCrossings = 0;
-        int signHolder = 0;
-        int nextSignHolder = 0;
-
         // get vectors of 2 sides
         vec3 vector1 = vertices[0] - vertices[1];
         vec3 vector2 = vertices[1] - vertices[2];
 
         // get plane normal
-        vec3 planeNormal = unit_vector(cross(vector1, vector2));
-        if (!r.shadowRay() && !r.reflectionRay()) {
-            normal = planeNormal;
-        }
-        currentNorm = planeNormal;
-
+        normal = unit_vector(cross(vector1, vector2));
         // get plane intersection
-        double d = -(vertices[0].x() * planeNormal.x() + vertices[0].y() * planeNormal.y() + vertices[0].z() * planeNormal.z());
-        auto planeDotRay = dot(planeNormal, r.direction());
+        double d = -(vertices[0].x() * normal.x() + vertices[0].y() * normal.y() + vertices[0].z() * normal.z());
+        auto planeDotRay = dot(normal, r.direction());
+        t = -(dot(normal, r.origin()) + d) / planeDotRay;
 
         // if ray is parallel or normal is pointing away, cull face. Excludes shadow rays
         if (planeDotRay >= 0 && !r.shadowRay()){
             return false;
         }
 
-        double intersection = -(dot(planeNormal, r.origin()) + d) / planeDotRay;
-
-        if (!r.shadowRay() && !r.reflectionRay()) {
-            t = intersection;
-        }
-
-        double currentPlaneDotRay = dot(currentNorm, r.direction());
-        double currentD = -(vertices[0].x() * currentNorm.x() + vertices[0].y() * currentNorm.y() + vertices[0].z() * currentNorm.z());
-        currentT = -(dot(currentNorm, r.origin()) + currentD) / currentPlaneDotRay;
-
         // If intersection is behind ray, don't draw face
-        if (intersection <= 0){
+        if (t <= 0){
             return false;
         }
 
-        vec3 P = r.at(intersection);
+        vec3 P = r.at(t);
 
         vec3 edge0 = vertices[1] - vertices[0];
         vec3 edge1 = vertices[2] - vertices[1];
@@ -146,86 +119,13 @@ private:
         vec3 C1 = P - vertices[1];
         vec3 C2 = P - vertices[2];
 
-        if(dot(planeNormal, cross(edge0, C0)) > 0 &&
-           dot(planeNormal, cross(edge1, C1)) > 0 &&
-           dot(planeNormal, cross(edge2, C2)) > 0) {
+        if(dot(normal, cross(edge0, C0)) > 0 &&
+           dot(normal, cross(edge1, C1)) > 0 &&
+           dot(normal, cross(edge2, C2)) > 0) {
             return true;
         }
         else {
             return false;
         }
     }
-
-
-//    if(vertices.size() == 3){
-//        return hitTri(vertices, ray, vector1, vector2);
-//    }
-
-//        // get dominant axis
-//        tuple<vec2, char> dominant = dominantProjection(planeNormal, 0);
-//        char dominantAxis = get<1>(dominant);
-//
-//        // project vertices and ray to dominant axis
-//        vector<vec2> projectedVertices;
-//        for (unsigned int i = 0; i < vertices.size(); i++) {
-//            projectedVertices.push_back(get<0>(dominantProjection(vertices.at(i), dominantAxis)));
-//        }
-//        vec2 projectedRay = get<0>(dominantProjection(r.at(intersection), dominantAxis));
-//
-//        // translate vertices and ray by -ray
-//        vector<vec2> translatedVertices;
-//        vec2 translation = projectedRay;
-//        for (unsigned int i = 0; i < projectedVertices.size(); i++) {
-//            translatedVertices.push_back(projectedVertices.at(i) - translation);
-//        }
-////    vec2 translatedRay = projectedRay - translation;
-//
-//
-//        // set initial sign holder and num crossings
-//        numCrossings = 0;
-//        if(translatedVertices.at(0).v() < 0){
-//            signHolder = -1;
-//        }
-//        else {
-//            signHolder = 1;
-//        }
-//
-//        // loop over vertices
-//        for(unsigned int i = 0; i < translatedVertices.size(); i++){
-//            int i_1;
-//            if (i == translatedVertices.size() - 1){
-//                i_1 = 0;
-//            }
-//            else{
-//                i_1 = i + 1;
-//            }
-//
-//            if(translatedVertices.at(i_1).v() < 0){
-//                nextSignHolder = -1;
-//            }
-//            else {
-//                nextSignHolder = 1;
-//            }
-//            if(signHolder != nextSignHolder){
-//                // crosses +U
-//                if ((translatedVertices.at(i).u() > 0) && (translatedVertices.at(i_1).u() > 0)){
-//                    numCrossings += 1;
-//                }
-//                    // might cross +U
-//                else if ((translatedVertices.at(i).u() > 0) || (translatedVertices.at(i_1).u() > 0)){
-//                    double ucross = translatedVertices.at(i).u() - translatedVertices.at(i).v() *
-//                            ((translatedVertices.at(i_1).u() - translatedVertices.at(i).u()) /
-//                            (translatedVertices.at(i_1).v() - translatedVertices.at(i).v()));
-//                    // crosses +U so increment
-//                    if (ucross > 0){
-//                        numCrossings += 1;
-//                    }
-//                }
-//            }
-//            signHolder = nextSignHolder;
-//        }
-//        return tuple<int, double, vec3>{numCrossings, intersection, planeNormal};
-//    }
-
-
 };

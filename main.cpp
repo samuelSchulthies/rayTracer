@@ -10,7 +10,7 @@
 
 using namespace std;
 
-scene scene = fushigi();
+scene scene = penetration();
 
 bool isInShadow = false;
 int maxReflectionDepth = 3;
@@ -38,8 +38,8 @@ color ray_color(const ray& r) {
         auto object= scene.objects.at(i);
 
         if (scene.objects[i]->hit(r)) {
-            currentNormal = object->getCurrentNorm();
-            currentT = object->getCurrentT();
+            currentNormal = object->getNormal();
+            currentT = object->getT();
             drawObject = true;
             hitObject = true;
         }
@@ -51,8 +51,8 @@ color ray_color(const ray& r) {
             return color(0.0,0.0,0.0);
         }
         if (hitObject && !r.shadowRay()){
-            if (object->getCurrentT() < minT){
-                minT = object->getCurrentT();
+            if (currentT < minT){
+                minT = currentT;
                 indexMinT = i;
             }
         }
@@ -75,11 +75,10 @@ color ray_color(const ray& r) {
     if (drawObject && scene.objects[indexMinT]->getRefl() > 0 && currentReflectionDepth < maxReflectionDepth && !r.shadowRay()) {
         currentReflectionDepth++;
 
-        vec3 normal = currentNormal;
-        vec3 offset = normal * 0.001;
+        vec3 offset = currentNormal * 0.001;
         vec3 reflectionRayOrigin = r.at(currentT) + offset;
 
-        vec3 reflectionRayDirection = unit_vector(unit_vector(r.direction()) - (2 * normal * dot(unit_vector(r.direction()), normal)));
+        vec3 reflectionRayDirection = unit_vector(unit_vector(r.direction()) - (2 * currentNormal * dot(unit_vector(r.direction()), currentNormal)));
 
         ray reflectionRay(reflectionRayOrigin, reflectionRayDirection);
         reflectionRay.setIsReflectionRay(true);
@@ -88,16 +87,12 @@ color ray_color(const ray& r) {
         currentReflectionDepth--;
     }
 
-    if (drawObject && !r.shadowRay() && r.reflectionRay()){
+    if (drawObject && !r.shadowRay()){
         color pixelColor = scene.objects[indexMinT]->shade(r, scene.directionToLight, scene.ambientLight, scene.lightColor, currentT, currentNormal) +
                reflectionColor * scene.objects[indexMinT]->getRefl();
         return pixelColor;
     }
-    if (drawObject && !r.shadowRay() && !r.reflectionRay()){
-        color pixelColor = scene.objects[indexMinT]->shade(r, scene.directionToLight, scene.ambientLight, scene.lightColor, currentT, currentNormal) +
-                reflectionColor * scene.objects[indexMinT]->getRefl();
-        return pixelColor;
-    }
+
     return color(scene.backgroundColor);
 }
 
