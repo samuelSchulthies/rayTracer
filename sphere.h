@@ -104,5 +104,4 @@ private:
     double t;
     vec3 normal;
     string type = "sphere";
-    bool isInShadow = false;
 };

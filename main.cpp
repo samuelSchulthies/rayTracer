@@ -10,34 +10,40 @@
 
 using namespace std;
 
-scene scene = penetration();
+scene scn = complex();
 
 bool isInShadow = false;
 int maxReflectionDepth = 3;
 int currentReflectionDepth = 0;
 
-// TODO: notes from debugging thus far: consolidating ifs at the bottomg of ray_color breaks complex scene.
+// TODO: notes from debugging thus far: consolidating ifs at the bottomg of ray_color breaks complex scene - FIXED
 // TODO:                                Spheres do not draw properly unless they are are pushed into vector in draw order
 // TODO:                                Blue sphere in threeSpheres breaks scene when pushed onto vector first
 
+// TODO: goals:
+// TODO: - multi sampling
+// TODO: - refraction
+// TODO: - obj importing
+// TODO: - texture mappingo
+
 
 color ray_color(const ray& r) {
-    auto objects = scene.objects;
-    // loop over every object in the scene (triangles, spheres)
+    auto objects = scn.objects;
     unsigned int indexMinT = 0;
     double minT = numeric_limits<double>::infinity();
     double currentT = numeric_limits<double>::infinity();
-    vec3 currentNormal = vec3(0.0, 0.0, 0.0);
+    vec3 currentNormal;
+    vec3 minNormal;
 
     bool hitObject = false;
     bool drawObject = false;
     color shadowColor;
     color reflectionColor;
-    for (unsigned int i = 0; i < scene.objects.size(); i++) {
+    for (unsigned int i = 0; i < scn.objects.size(); i++) {
 
-        auto object= scene.objects.at(i);
+        auto object= scn.objects.at(i);
 
-        if (scene.objects[i]->hit(r)) {
+        if (scn.objects[i]->hit(r)) {
             currentNormal = object->getNormal();
             currentT = object->getT();
             drawObject = true;
@@ -53,18 +59,21 @@ color ray_color(const ray& r) {
         if (hitObject && !r.shadowRay()){
             if (currentT < minT){
                 minT = currentT;
+                minNormal = currentNormal;
                 indexMinT = i;
             }
         }
     }
 
-    if (drawObject && scene.objects[indexMinT]->getRefl() == 0 && !r.shadowRay()) {
+    auto object= scn.objects.at(indexMinT);
+
+    if (drawObject && object->getRefl() == 0 && !r.shadowRay()) {
         vec3 offset = currentNormal * 0.001;
         vec3 shadowRayOrigin = r.at(currentT) + offset;
-        vec3 shadowRayDirection = unit_vector(scene.directionToLight); // only subtract from ray hit if point light
+        vec3 shadowRayDirection = unit_vector(scn.directionToLight); // only subtract from ray hit if point light
         ray shadowRay(shadowRayOrigin, shadowRayDirection);
         shadowRay.setIsShadowRay(true);
-        shadowColor = ray_color(shadowRay);
+        shadowColor = ray_color(shadowRay); // Comment out to turn off shadow rays
     }
 
     if (drawObject && isInShadow){
@@ -72,7 +81,7 @@ color ray_color(const ray& r) {
         return shadowColor;
     }
 
-    if (drawObject && scene.objects[indexMinT]->getRefl() > 0 && currentReflectionDepth < maxReflectionDepth && !r.shadowRay()) {
+    if (drawObject && object->getRefl() > 0 && currentReflectionDepth < maxReflectionDepth && !r.shadowRay()) {
         currentReflectionDepth++;
 
         vec3 offset = currentNormal * 0.001;
@@ -82,21 +91,22 @@ color ray_color(const ray& r) {
 
         ray reflectionRay(reflectionRayOrigin, reflectionRayDirection);
         reflectionRay.setIsReflectionRay(true);
-        reflectionColor = ray_color(reflectionRay);
+        reflectionColor = ray_color(reflectionRay); // Comment out to turn of reflection rays
 
         currentReflectionDepth--;
     }
 
-    if (drawObject && !r.shadowRay()){
-        color pixelColor = scene.objects[indexMinT]->shade(r, scene.directionToLight, scene.ambientLight, scene.lightColor, currentT, currentNormal) +
-               reflectionColor * scene.objects[indexMinT]->getRefl();
+    if (drawObject && !r.shadowRay()){ // don't think I need extra shadow ray check here
+        color pixelColor = object->shade(r, scn.directionToLight, scn.ambientLight, scn.lightColor, minT, minNormal) +
+               reflectionColor * object->getRefl();
         return pixelColor;
     }
 
-    return color(scene.backgroundColor);
+    return color(scn.backgroundColor);
 }
 
 int main() {
+    scene debug = scn;
     // Image:
     //-----------------------------------------------------------------------------------------------------------------
     /*
@@ -131,7 +141,7 @@ int main() {
     auto pixel_delta_v = viewport_v / image_height;
 
     // Calculate the location of the upper left pixel
-    auto viewport_upper_left = scene.cameraLookAt - scene.cameraLookFrom - viewport_u/2 - viewport_v/2;
+    auto viewport_upper_left = scn.cameraLookAt - scn.cameraLookFrom - viewport_u/2 - viewport_v/2;
     auto pixel00_loc = viewport_upper_left + 0.5 * (pixel_delta_u + pixel_delta_v);
     //-----------------------------------------------------------------------------------------------------------------
 
@@ -153,8 +163,8 @@ int main() {
         clog << "\rScanLines remaining: " << (image_height - j) << ' ' << flush;
         for (int i = 0; i < image_width; i++) {
             auto pixel_center = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
-            auto ray_direction = pixel_center - scene.cameraLookFrom;
-            ray r(scene.cameraLookFrom, ray_direction);
+            auto ray_direction = pixel_center - scn.cameraLookFrom;
+            ray r(scn.cameraLookFrom, ray_direction);
 
             color pixel_color = ray_color(r);
             write_color(outputImage, pixel_color);

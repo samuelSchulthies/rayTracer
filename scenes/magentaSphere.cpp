@@ -1,8 +1,9 @@
 #include "scene.h"
 
 scene magentaSphere() {
+    vector<hittable*> objects;
 
-    sphere sphere({0.0, 0.0, 0.0},
+    objects.push_back(new sphere({0.0, 0.0, 0.0},
                           0.4,
                           0.7,
                           0.2,
@@ -10,9 +11,7 @@ scene magentaSphere() {
                           {1.0, 0.0, 1.0},
                           {1.0, 1.0, 1.0},
                           16.0,
-                          0.0);
-
-    vector<hittable*> objects = {&sphere};
+                          0.0));
 
     return scene(1.0,
                  vec3(0, 0, 0),

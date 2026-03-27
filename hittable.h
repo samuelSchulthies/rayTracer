@@ -10,7 +10,7 @@ public:
     virtual ~hittable() = default;
     virtual bool hit(const ray& ray) = 0;
 
-    virtual vec3 shade(const ray& ray, vec3 directionToLight, vec3 ambientLight, vec3 lightColor, double newT, vec3 newNorm) = 0;
+    virtual vec3 shade(const ray& ray, vec3 directionToLight, vec3 ambientLight, vec3 lightColor, double t, vec3 newNorm) = 0;
 
     virtual double getT() = 0;
     virtual vec3 getNormal() = 0;
