@@ -10,7 +10,7 @@
 
 using namespace std;
 
-scene scn = complex();
+scene scn = fushigi();
 
 bool isInShadow = false;
 int maxReflectionDepth = 3;
@@ -20,7 +20,11 @@ int currentReflectionDepth = 0;
 // TODO: - multi sampling
 // TODO: - refraction
 // TODO: - obj importing
-// TODO: - texture mappingo
+// extras:
+// TODO: - texture mapping
+// TODO: - DoF
+// TODO: - Metalness
+// TODO: - Point light
 
 
 color ray_color(const ray& r) {
