@@ -1,4 +1,4 @@
-This ray tracer uses the Phong illumination model and implements proper intersections with spheres and triangles It also implements shadows and reflections. 
+This ray tracer uses the Phong illumination model and implements spheres, triangles, interesections, shadows, and reflections. 
 Boiler plate code, such as the ray logic and vec3 class, were implemented with Ray Tracing in One Weekend.
 
 
