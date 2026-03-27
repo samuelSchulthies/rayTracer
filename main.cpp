@@ -16,10 +16,6 @@ bool isInShadow = false;
 int maxReflectionDepth = 3;
 int currentReflectionDepth = 0;
 
-// TODO: notes from debugging thus far: consolidating ifs at the bottomg of ray_color breaks complex scene - FIXED
-// TODO:                                Spheres do not draw properly unless they are are pushed into vector in draw order
-// TODO:                                Blue sphere in threeSpheres breaks scene when pushed onto vector first
-
 // TODO: goals:
 // TODO: - multi sampling
 // TODO: - refraction
@@ -68,8 +64,8 @@ color ray_color(const ray& r) {
     auto object= scn.objects.at(indexMinT);
 
     if (drawObject && object->getRefl() == 0 && !r.shadowRay()) {
-        vec3 offset = currentNormal * 0.001;
-        vec3 shadowRayOrigin = r.at(currentT) + offset;
+        vec3 offset = minNormal * 0.001;
+        vec3 shadowRayOrigin = r.at(minT) + offset;
         vec3 shadowRayDirection = unit_vector(scn.directionToLight); // only subtract from ray hit if point light
         ray shadowRay(shadowRayOrigin, shadowRayDirection);
         shadowRay.setIsShadowRay(true);
@@ -91,7 +87,7 @@ color ray_color(const ray& r) {
 
         ray reflectionRay(reflectionRayOrigin, reflectionRayDirection);
         reflectionRay.setIsReflectionRay(true);
-        reflectionColor = ray_color(reflectionRay); // Comment out to turn of reflection rays
+        reflectionColor = ray_color(reflectionRay); // Comment out to turn off reflection rays
 
         currentReflectionDepth--;
     }
