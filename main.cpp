@@ -3,14 +3,16 @@
 #include "ray.h"
 #include "hittable.h"
 #include "scenes/scene.h"
+#include "utility.h"
 
 #include <iostream>
 #include <algorithm>
 #include <fstream>
+#include <random>
 
 using namespace std;
 
-scene scn = fushigi();
+scene scn = penetration();
 
 bool isInShadow = false;
 int maxReflectionDepth = 3;
@@ -105,8 +107,24 @@ color ray_color(const ray& r) {
     return color(scn.backgroundColor);
 }
 
+void multiSample(vec3 pixel00_loc, vec3 pixelCenter, ofstream& outputImage, double i, double j, vec3 pixel_delta_u, vec3 pixel_delta_v){
+    vec3 pixelSum;
+    int sampleAmount = 16;
+
+    for (unsigned int k = 0; k < sampleAmount; k++) {
+        vec3 offset = vec3(randomDouble() + 0.5, randomDouble() + 0.5, 0.0);
+        vec3 jitteredRay = pixel00_loc + ((i + offset.x()) * pixel_delta_u) + ((j + offset.y()) * pixel_delta_v);
+
+        auto ray_direction = jitteredRay - scn.cameraLookFrom;
+        ray r(scn.cameraLookFrom, ray_direction);
+
+        pixelSum += ray_color(r);
+    }
+    pixelSum /= sampleAmount;
+    write_color(outputImage, pixelSum);
+}
+
 int main() {
-    scene debug = scn;
     // Image:
     //-----------------------------------------------------------------------------------------------------------------
     /*
@@ -162,12 +180,8 @@ int main() {
     for (int j = 0; j < image_height; j++) {
         clog << "\rScanLines remaining: " << (image_height - j) << ' ' << flush;
         for (int i = 0; i < image_width; i++) {
-            auto pixel_center = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
-            auto ray_direction = pixel_center - scn.cameraLookFrom;
-            ray r(scn.cameraLookFrom, ray_direction);
-
-            color pixel_color = ray_color(r);
-            write_color(outputImage, pixel_color);
+            auto pixelCenter = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
+            multiSample(pixel00_loc, pixelCenter, outputImage, i, j, pixel_delta_u, pixel_delta_v);
         }
     }
     outputImage.close();

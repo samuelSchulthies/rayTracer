@@ -2,6 +2,8 @@
 
 #include "vec3.h"
 
+#include <random>
+
 class ray {
 public:
     ray() {}
