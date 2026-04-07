@@ -11,6 +11,7 @@ scene threeSpheres() {
                        {1.0, 1.0, 1.0},
                        {1.0, 1.0, 1.0},
                        4.0,
+                       0.0,
                        0.0));
     //red sphere
     objects.push_back(new sphere({0.0, 0.0, -0.1},
@@ -21,6 +22,7 @@ scene threeSpheres() {
                      {1.0, 0.0, 0.0},
                      {1.0, 1.0, 1.0},
                      32.0,
+                     0.0,
                      0.0));
     //green sphere
     objects.push_back(new sphere({-0.60, 0.0, 0.0},
@@ -31,6 +33,7 @@ scene threeSpheres() {
                        {0.0, 1.0, 0.0},
                        {0.5, 1.0, 0.5},
                        64.0,
+                       0.0,
                        0.0));
     // blue sphere
     objects.push_back(new sphere({0.0, -10000.5, 0.0},
@@ -41,6 +44,7 @@ scene threeSpheres() {
                       {0.0, 0.0, 1.0},
                       {1.0, 1.0, 1.0},
                       16.0,
+                      0.0,
                       0.0));
 
 //    vector<hittable*> objects = {&whiteSphere, &redSphere, &greenSphere, &blueSphere};

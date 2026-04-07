@@ -19,6 +19,7 @@ scene spiralSpheres(){
                                  {r, g, b},
                                  {1.0, 1.0, 1.0},
                                  4.0,
+                                 0.0,
                                  0.0));
         angle += 1.0;
         x += cos(angle) * radius;

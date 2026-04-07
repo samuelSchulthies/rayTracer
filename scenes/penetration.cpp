@@ -12,6 +12,7 @@ scene penetration() {
                                  {1.0, 1.0, 1.0},
                                  {1.0, 1.0, 1.0},
                                  4.0,
+                                 0.0,
                                  0.0));
     //red sphere
     objects.push_back(new sphere({0.3, 0.0, -0.1},
@@ -22,6 +23,7 @@ scene penetration() {
                                  {1.0, 0.0, 0.0},
                                  {0.5, 1.0, 0.5},
                                  32.0,
+                                 0.0,
                                  0.0));
     // green sphere
     objects.push_back(new sphere({-0.6, 0.0, 0.0},
@@ -32,6 +34,7 @@ scene penetration() {
                                  {0.0, 1.0, 0.0},
                                  {0.5, 1.0, 0.5},
                                  64.0,
+                                 0.0,
                                  0.0));
     // reflective sphere
     objects.push_back(new sphere({0.1, -0.55, 0.25},
@@ -42,7 +45,8 @@ scene penetration() {
                                  {0.75, 0.75, 0.75},
                                  {1.0, 1.0, 1.0},
                                  10.0,
-                                 0.9));
+                                 0.9,
+                                 0.0));
     // blue triangle
     objects.push_back(new polygon({{0.3, -0.3, -0.4},
                                    {0.0, 0.3, -0.1},
@@ -53,6 +57,7 @@ scene penetration() {
                                   {0.0, 0.0, 1.0},
                                   {1.0, 1.0, 1.0},
                                   32.0,
+                                  0.0,
                                   0.0));
     // yellow triangle
     objects.push_back( new polygon({{-0.2, 0.1, 0.1},
@@ -64,6 +69,7 @@ scene penetration() {
                                    {1.0, 1.0, 0.0},
                                    {1.0, 1.0, 1.0},
                                    4.0,
+                                   0.0,
                                    0.0));
 
     return scene(1.0,

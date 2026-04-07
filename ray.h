@@ -29,6 +29,10 @@ public:
         return isReflectionRay;
     }
 
+    bool transmissionRay() const {
+        return isTransmissionRay;
+    }
+
     void setIsShadowRay(bool shadow){
         isShadowRay = shadow;
     }
@@ -37,9 +41,14 @@ public:
         isReflectionRay = reflection;
     }
 
+    void setIsTransmissionRay(bool transmission){
+        isTransmissionRay = transmission;
+    }
+
 private:
     point3 orig;
     vec3 dir;
     bool isShadowRay = false;
     bool isReflectionRay = false;
+    bool isTransmissionRay = false;
 };

@@ -19,7 +19,7 @@ int maxReflectionDepth = 3;
 int currentReflectionDepth = 0;
 
 // TODO: goals:
-// TODO: - multi sampling
+// TODO: - multi sampling DONE
 // TODO: - refraction
 // TODO: - obj importing
 // extras:
@@ -98,6 +98,10 @@ color ray_color(const ray& r) {
         currentReflectionDepth--;
     }
 
+    if (drawObject && object->getTrans() > 0 && !r.shadowRay()){
+
+    }
+
     if (drawObject && !r.shadowRay()){ // don't think I need extra shadow ray check here
         color pixelColor = object->shade(r, scn.directionToLight, scn.ambientLight, scn.lightColor, minT, minNormal) +
                reflectionColor * object->getRefl();
@@ -107,7 +111,7 @@ color ray_color(const ray& r) {
     return color(scn.backgroundColor);
 }
 
-void multiSample(vec3 pixel00_loc, vec3 pixelCenter, ofstream& outputImage, double i, double j, vec3 pixel_delta_u, vec3 pixel_delta_v){
+void multiSample(vec3 pixel00_loc, ofstream& outputImage, double i, double j, vec3 pixel_delta_u, vec3 pixel_delta_v){
     vec3 pixelSum;
     int sampleAmount = 16;
 
@@ -180,8 +184,8 @@ int main() {
     for (int j = 0; j < image_height; j++) {
         clog << "\rScanLines remaining: " << (image_height - j) << ' ' << flush;
         for (int i = 0; i < image_width; i++) {
-            auto pixelCenter = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
-            multiSample(pixel00_loc, pixelCenter, outputImage, i, j, pixel_delta_u, pixel_delta_v);
+//            auto pixelCenter = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
+            multiSample(pixel00_loc, outputImage, i, j, pixel_delta_u, pixel_delta_v);
         }
     }
     outputImage.close();

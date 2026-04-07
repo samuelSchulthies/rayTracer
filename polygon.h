@@ -11,9 +11,10 @@ public:
            const double& Kd, const double& Ks, const double& Ka,
            const vec3& Od, const vec3& Os,
            const double& Kgls,
-           const double& Refl)
+           const double& Refl,
+           const double& trans)
            :
-           vertices(vertices), Kd(Kd), Ks(Ks), Ka(Ka), Od(Od), Os(Os), Kgls(Kgls), Refl(Refl) {}
+           vertices(vertices), Kd(Kd), Ks(Ks), Ka(Ka), Od(Od), Os(Os), Kgls(Kgls), Refl(Refl), trans(trans) {}
 
     vector<vec3> getVertices() const{
         return vertices;
@@ -52,6 +53,10 @@ public:
         return Refl;
     }
 
+    virtual double getTrans() override {
+        return trans;
+    }
+
     string getType() override {
         return type;
     }
@@ -83,6 +88,7 @@ private:
     vec3 Os;
     double Kgls;
     double Refl;
+    double trans;
     double t;
     vec3 normal;
     string type = "polygon";

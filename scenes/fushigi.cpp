@@ -12,7 +12,8 @@ scene fushigi() {
                        {0.75, 0.75, 0.75},
                        {1.0, 1.0, 1.0},
                        10.0,
-                       0.9));
+                       0.9,
+                       0.0));
     // blue triangle
     objects.push_back(new polygon({{0.0, -0.7, -0.5},
                          {1.0, 0.4, -1.0},
@@ -23,6 +24,7 @@ scene fushigi() {
                          {0.0, 0.0, 1.0},
                          {1.0, 1.0, 1.0},
                          4.0,
+                         0.0,
                          0.0));
     // yellow triangle
     objects.push_back( new polygon({{0.0, -0.7, -0.5},
@@ -34,6 +36,7 @@ scene fushigi() {
                          {1.0, 1.0, 0.0},
                          {1.0, 1.0, 1.0},
                          4.0,
+                         0.0,
                          0.0));
 
     return scene(1.0,
