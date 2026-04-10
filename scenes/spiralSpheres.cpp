@@ -20,7 +20,7 @@ scene spiralSpheres(){
                                  {1.0, 1.0, 1.0},
                                  4.0,
                                  0.0,
-                                 0.0));
+                                 1.52));
         angle += 1.0;
         x += cos(angle) * radius;
         y += sin(angle) * radius;

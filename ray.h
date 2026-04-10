@@ -8,7 +8,9 @@ class ray {
 public:
     ray() {}
 
-    ray(const point3& origin, const vec3& direction) : orig(origin), dir(direction) {}
+    ray(const point3& origin, const vec3& direction, const double& refractIndex)
+    :
+    orig(origin), dir(direction), refractIndex(refractIndex) {}
 
     const point3& origin() const {
         return orig;
@@ -33,6 +35,10 @@ public:
         return isTransmissionRay;
     }
 
+    double getRefractIndex() const {
+        return refractIndex;
+    }
+
     void setIsShadowRay(bool shadow){
         isShadowRay = shadow;
     }
@@ -45,10 +51,15 @@ public:
         isTransmissionRay = transmission;
     }
 
+    void setRefractIndex(bool index){
+        refractIndex = index;
+    }
+
 private:
     point3 orig;
     vec3 dir;
     bool isShadowRay = false;
     bool isReflectionRay = false;
     bool isTransmissionRay = false;
+    double refractIndex;
 };

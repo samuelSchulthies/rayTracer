@@ -1,6 +1,6 @@
 #include "scene.h"
 
-scene complex() {
+scene tryforce() {
 
     vector<hittable*> objects;
 //    // reflective sphere

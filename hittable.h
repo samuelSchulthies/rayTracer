@@ -15,7 +15,7 @@ public:
     virtual double getT() = 0;
     virtual vec3 getNormal() = 0;
     virtual double getRefl() = 0;
-    virtual double getTrans() = 0;
+    virtual double getRefractIndex() = 0;
     virtual string getType() = 0;
 
 };

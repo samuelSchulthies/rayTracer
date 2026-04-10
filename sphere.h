@@ -15,9 +15,9 @@ public:
            const vec3& Od, const vec3& Os,
            const double& Kgls,
            const double& Refl,
-           const double& trans)
+           const double& refractIndex)
            :
-           center(center), radius(radius), Kd(Kd), Ks(Ks), Ka(Ka), Od(Od), Os(Os), Kgls(Kgls), Refl(Refl), trans(trans) {}
+           center(center), radius(radius), Kd(Kd), Ks(Ks), Ka(Ka), Od(Od), Os(Os), Kgls(Kgls), Refl(Refl), refractIndex(refractIndex) {}
 
     vec3 getCenter() const{
         return center;
@@ -59,8 +59,8 @@ public:
         return Refl;
     }
 
-    virtual double getTrans() override {
-        return trans;
+    virtual double getRefractIndex() override {
+        return refractIndex;
     }
 
     virtual string getType() override {
@@ -106,7 +106,7 @@ private:
     vec3 Os;
     double Kgls;
     double Refl;
-    double trans;
+    double refractIndex;
     double t;
     vec3 normal;
     string type = "sphere";

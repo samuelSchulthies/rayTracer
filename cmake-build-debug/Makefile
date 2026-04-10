@@ -153,30 +153,6 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-scenes/complex.o: scenes/complex.cpp.o
-.PHONY : scenes/complex.o
-
-# target to build an object file
-scenes/complex.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/complex.cpp.o
-.PHONY : scenes/complex.cpp.o
-
-scenes/complex.i: scenes/complex.cpp.i
-.PHONY : scenes/complex.i
-
-# target to preprocess a source file
-scenes/complex.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/complex.cpp.i
-.PHONY : scenes/complex.cpp.i
-
-scenes/complex.s: scenes/complex.cpp.s
-.PHONY : scenes/complex.s
-
-# target to generate assembly for a file
-scenes/complex.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/complex.cpp.s
-.PHONY : scenes/complex.cpp.s
-
 scenes/fushigi.o: scenes/fushigi.cpp.o
 .PHONY : scenes/fushigi.o
 
@@ -249,6 +225,30 @@ scenes/penetration.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/penetration.cpp.s
 .PHONY : scenes/penetration.cpp.s
 
+scenes/refraction.o: scenes/refraction.cpp.o
+.PHONY : scenes/refraction.o
+
+# target to build an object file
+scenes/refraction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/refraction.cpp.o
+.PHONY : scenes/refraction.cpp.o
+
+scenes/refraction.i: scenes/refraction.cpp.i
+.PHONY : scenes/refraction.i
+
+# target to preprocess a source file
+scenes/refraction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/refraction.cpp.i
+.PHONY : scenes/refraction.cpp.i
+
+scenes/refraction.s: scenes/refraction.cpp.s
+.PHONY : scenes/refraction.s
+
+# target to generate assembly for a file
+scenes/refraction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/refraction.cpp.s
+.PHONY : scenes/refraction.cpp.s
+
 scenes/spiralSpheres.o: scenes/spiralSpheres.cpp.o
 .PHONY : scenes/spiralSpheres.o
 
@@ -297,6 +297,30 @@ scenes/threeSpheres.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.s
 .PHONY : scenes/threeSpheres.cpp.s
 
+scenes/tryforce.o: scenes/tryforce.cpp.o
+.PHONY : scenes/tryforce.o
+
+# target to build an object file
+scenes/tryforce.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o
+.PHONY : scenes/tryforce.cpp.o
+
+scenes/tryforce.i: scenes/tryforce.cpp.i
+.PHONY : scenes/tryforce.i
+
+# target to preprocess a source file
+scenes/tryforce.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.i
+.PHONY : scenes/tryforce.cpp.i
+
+scenes/tryforce.s: scenes/tryforce.cpp.s
+.PHONY : scenes/tryforce.s
+
+# target to generate assembly for a file
+scenes/tryforce.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.s
+.PHONY : scenes/tryforce.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -309,9 +333,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... scenes/complex.o"
-	@echo "... scenes/complex.i"
-	@echo "... scenes/complex.s"
 	@echo "... scenes/fushigi.o"
 	@echo "... scenes/fushigi.i"
 	@echo "... scenes/fushigi.s"
@@ -321,12 +342,18 @@ help:
 	@echo "... scenes/penetration.o"
 	@echo "... scenes/penetration.i"
 	@echo "... scenes/penetration.s"
+	@echo "... scenes/refraction.o"
+	@echo "... scenes/refraction.i"
+	@echo "... scenes/refraction.s"
 	@echo "... scenes/spiralSpheres.o"
 	@echo "... scenes/spiralSpheres.i"
 	@echo "... scenes/spiralSpheres.s"
 	@echo "... scenes/threeSpheres.o"
 	@echo "... scenes/threeSpheres.i"
 	@echo "... scenes/threeSpheres.s"
+	@echo "... scenes/tryforce.o"
+	@echo "... scenes/tryforce.i"
+	@echo "... scenes/tryforce.s"
 .PHONY : help
 
 
