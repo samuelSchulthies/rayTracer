@@ -12,13 +12,11 @@
 
 using namespace std;
 
-scene scn = refraction();
+scene scn = penetration();
 
 bool isInShadow = false;
 int maxReflectionDepth = 3;
 int currentReflectionDepth = 0;
-int maxRefractionDepth = 3;
-int currentRefractionDepth = 0;
 
 // TODO: goals:
 // TODO: - multi sampling DONE
@@ -30,20 +28,26 @@ int currentRefractionDepth = 0;
 // TODO: - Metalness
 // TODO: - Point light
 
+color shadow(vec3 minNormal, double minT, ray r);
+color reflection(vec3 currentNormal, ray r, double currentT);
+color refraction(vec3 currentNormal, ray r, double currentT, auto object);
 
 color ray_color(const ray& r) {
     auto objects = scn.objects;
-    unsigned int indexMinT = 0;
-    double minT = numeric_limits<double>::infinity();
+
     double currentT = numeric_limits<double>::infinity();
     vec3 currentNormal;
+    double minT = numeric_limits<double>::infinity();
+    unsigned int indexMinT = 0;
     vec3 minNormal;
 
     bool hitObject = false;
     bool drawObject = false;
+
     color shadowColor;
     color reflectionColor;
     color transmissionColor;
+
     for (unsigned int i = 0; i < scn.objects.size(); i++) {
 
         auto object= scn.objects.at(i);
@@ -73,12 +77,7 @@ color ray_color(const ray& r) {
     auto object= scn.objects.at(indexMinT);
 
     if (drawObject && object->getRefl() == 0 && object->getRefractIndex() == 0 && !r.shadowRay()) {
-        vec3 offset = minNormal * 0.001;
-        vec3 shadowRayOrigin = r.at(minT) + offset;
-        vec3 shadowRayDirection = unit_vector(scn.directionToLight); // only subtract from ray hit if point light
-        ray shadowRay(shadowRayOrigin, shadowRayDirection, 1.0003);
-        shadowRay.setIsShadowRay(true);
-        shadowColor = ray_color(shadowRay); // Comment out to turn off shadow rays
+        shadowColor = shadow(minNormal, minT, r);
     }
 
     if (drawObject && isInShadow){
@@ -87,42 +86,11 @@ color ray_color(const ray& r) {
     }
 
     if (drawObject && object->getRefl() > 0 && currentReflectionDepth < maxReflectionDepth && !r.shadowRay()) {
-        currentReflectionDepth++;
-
-        vec3 offset = currentNormal * 0.001;
-        vec3 reflectionRayOrigin = r.at(currentT) + offset;
-
-        vec3 reflectionRayDirection = unit_vector(unit_vector(r.direction()) - (2 * currentNormal * dot(unit_vector(r.direction()), currentNormal)));
-
-        ray reflectionRay(reflectionRayOrigin, reflectionRayDirection, 1.0003);
-        reflectionRay.setIsReflectionRay(true);
-        reflectionColor = ray_color(reflectionRay); // Comment out to turn off reflection rays
-
-        currentReflectionDepth--;
+        reflectionColor = reflection(currentNormal, r, currentT);
     }
 
     if (drawObject && object->getRefractIndex() > 0 && !r.transmissionRay() && !r.shadowRay()){
-//        currentRefractionDepth++;
-
-        vec3 offset = currentNormal * -0.001;
-        vec3 transmissionRayOrigin = r.at(currentT) + offset;
-
-        double n1 = r.getRefractIndex();
-        double n2 = object->getRefractIndex();
-        double quotient = n1 / n2;
-        double cosTheta = fmin(dot(unit_vector(-r.direction()), currentNormal), 1.0);
-
-        vec3 rPerp = quotient * (r.direction() + cosTheta * currentNormal);
-        vec3 rParallel = -currentNormal * sqrt(fabs(1.0 - rPerp.length_squared()));
-        vec3 transmissionRayDirection = rPerp + rParallel;
-
-        ray transmissionRay(transmissionRayOrigin, transmissionRayDirection, object->getRefractIndex());
-        transmissionRay.setIsTransmissionRay(true);
-        transmissionColor = ray_color(transmissionRay); // Comment out to turn off transmission rays
-
-//        currentRefractionDepth--;
-
-        return transmissionColor;
+        return refraction(currentNormal, r, currentT, object);
     }
 
     if (drawObject && !r.shadowRay()){ // don't think I need extra shadow ray check here
@@ -132,6 +100,50 @@ color ray_color(const ray& r) {
     }
 
     return color(scn.backgroundColor);
+}
+
+color shadow(vec3 minNormal, double minT, ray r){
+    vec3 offset = minNormal * 0.001;
+    vec3 shadowRayOrigin = r.at(minT) + offset;
+    vec3 shadowRayDirection = unit_vector(scn.directionToLight); // only subtract from ray hit if point light
+    ray shadowRay(shadowRayOrigin, shadowRayDirection, 1.0003);
+    shadowRay.setIsShadowRay(true);
+    return ray_color(shadowRay);
+}
+
+color reflection(vec3 currentNormal, ray r, double currentT){
+    currentReflectionDepth++;
+
+    vec3 offset = currentNormal * 0.001;
+    vec3 reflectionRayOrigin = r.at(currentT) + offset;
+
+    vec3 reflectionRayDirection = unit_vector(unit_vector(r.direction()) - (2 * currentNormal * dot(unit_vector(r.direction()), currentNormal)));
+
+    ray reflectionRay(reflectionRayOrigin, reflectionRayDirection, 1.0003);
+    reflectionRay.setIsReflectionRay(true);
+
+    currentReflectionDepth--;
+
+    return ray_color(reflectionRay);
+}
+
+color refraction(vec3 currentNormal, ray r, double currentT, auto object){
+    vec3 offset = currentNormal * -0.001;
+    vec3 transmissionRayOrigin = r.at(currentT) + offset;
+
+    double n1 = r.getRefractIndex();
+    double n2 = object->getRefractIndex();
+    double quotient = n1 / n2;
+    double cosTheta = fmin(dot(unit_vector(-r.direction()), currentNormal), 1.0);
+
+    vec3 rPerp = quotient * (r.direction() + cosTheta * currentNormal);
+    vec3 rParallel = -currentNormal * sqrt(fabs(1.0 - rPerp.length_squared()));
+    vec3 transmissionRayDirection = rPerp + rParallel;
+
+    ray transmissionRay(transmissionRayOrigin, transmissionRayDirection, object->getRefractIndex());
+    transmissionRay.setIsTransmissionRay(true);
+
+    return ray_color(transmissionRay);
 }
 
 void multiSample(vec3 pixel00_loc, ofstream& outputImage, double i, double j, vec3 pixel_delta_u, vec3 pixel_delta_v){
