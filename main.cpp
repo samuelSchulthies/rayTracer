@@ -101,25 +101,28 @@ color ray_color(const ray& r) {
         currentReflectionDepth--;
     }
 
-    if (drawObject && object->getRefractIndex() > 0 && currentRefractionDepth < maxRefractionDepth && !r.shadowRay()){
-        currentRefractionDepth++;
+    if (drawObject && object->getRefractIndex() > 0 && !r.transmissionRay() && !r.shadowRay()){
+//        currentRefractionDepth++;
 
-        vec3 offset = currentNormal * 0.001;
+        vec3 offset = currentNormal * -0.001;
         vec3 transmissionRayOrigin = r.at(currentT) + offset;
 
         double n1 = r.getRefractIndex();
         double n2 = object->getRefractIndex();
         double quotient = n1 / n2;
-        double cosTheta = dot(unit_vector(r.direction()), currentNormal);
-        double sinSqrTheta = 1 - pow(cosTheta, 2);
-        vec3 transmissionRayDirection = unit_vector(((quotient) * (r.direction() + cosTheta * currentNormal))
-                                                    - (currentNormal * sqrt(1 - pow(quotient, 2) * sinSqrTheta)));
+        double cosTheta = fmin(dot(unit_vector(-r.direction()), currentNormal), 1.0);
 
-        ray transmissionRay(transmissionRayOrigin, transmissionRayDirection, 1.0003);
+        vec3 rPerp = quotient * (r.direction() + cosTheta * currentNormal);
+        vec3 rParallel = -currentNormal * sqrt(fabs(1.0 - rPerp.length_squared()));
+        vec3 transmissionRayDirection = rPerp + rParallel;
+
+        ray transmissionRay(transmissionRayOrigin, transmissionRayDirection, object->getRefractIndex());
         transmissionRay.setIsTransmissionRay(true);
-        return ray_color(transmissionRay); // Comment out to turn off transmission rays
+        transmissionColor = ray_color(transmissionRay); // Comment out to turn off transmission rays
 
-        currentRefractionDepth--;
+//        currentRefractionDepth--;
+
+        return transmissionColor;
     }
 
     if (drawObject && !r.shadowRay()){ // don't think I need extra shadow ray check here
