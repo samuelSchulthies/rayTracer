@@ -12,7 +12,7 @@
 
 using namespace std;
 
-scene scn = fushigi();
+scene scn = refraction();
 
 bool isInShadow = false;
 int maxReflectionDepth = 3;
@@ -35,7 +35,7 @@ color refraction(vec3 currentNormal, ray r, double currentT, auto object);
 
 color ray_color(const ray& r) {
     auto objects = scn.objects;
-    objects = hittable_list(make_shared<bvh_node>(objects));
+//    objects = hittable_list(make_shared<bvh_node>(objects));
 
     double currentT = numeric_limits<double>::infinity();
     vec3 currentNormal;
@@ -144,7 +144,7 @@ color refraction(vec3 currentNormal, ray r, double currentT, auto object){
     double quotient = n1 / n2;
     double cosTheta = fmin(dot(unit_vector(-r.direction()), currentNormal), 1.0);
 
-    vec3 rPerp = quotient * (r.direction() + cosTheta * currentNormal);
+    vec3 rPerp = quotient * (unit_vector(r.direction()) + cosTheta * currentNormal);
     vec3 rParallel = -currentNormal * sqrt(fabs(1.0 - rPerp.length_squared()));
     vec3 transmissionRayDirection = rPerp + rParallel;
 
