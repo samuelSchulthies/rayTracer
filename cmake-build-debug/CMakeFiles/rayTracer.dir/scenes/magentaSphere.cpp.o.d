@@ -1031,5 +1031,8 @@ CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/path_iterator.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/recursive_directory_iterator.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__filesystem/u8path.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../aabb.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../interval.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../shading.h \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../polygon.h
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../polygon.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../hittable_list.h

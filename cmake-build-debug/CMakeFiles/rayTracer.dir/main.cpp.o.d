@@ -1029,6 +1029,8 @@ CMakeFiles/rayTracer.dir/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__random/weibull_distribution.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/vec2.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/aabb.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/interval.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/scene.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../sphere.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../vec3.h \
@@ -1037,4 +1039,7 @@ CMakeFiles/rayTracer.dir/main.cpp.o: \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../shading.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../vec2.h \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/utility.h
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../hittable_list.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/utility.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/bvh.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable_list.h

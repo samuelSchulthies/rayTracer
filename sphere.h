@@ -17,7 +17,11 @@ public:
            const double& Refl,
            const double& refractIndex)
            :
-           center(center), radius(radius), Kd(Kd), Ks(Ks), Ka(Ka), Od(Od), Os(Os), Kgls(Kgls), Refl(Refl), refractIndex(refractIndex) {}
+           center(center), radius(radius), Kd(Kd), Ks(Ks), Ka(Ka), Od(Od), Os(Os), Kgls(Kgls), Refl(Refl), refractIndex(refractIndex)
+           {
+                auto rvec = vec3(radius, radius, radius);
+                bbox = aabb(center - rvec, center + rvec);
+           }
 
     vec3 getCenter() const{
         return center;
@@ -91,6 +95,10 @@ public:
         return false;
     }
 
+    aabb bounding_box() const override {
+        return bbox;
+    }
+
     vec3 shade(const ray& r, vec3 directionToLight, vec3 ambientLight, vec3 lightColor, double newT, vec3 newNorm) override {
         return shading().computePhong(type, r, directionToLight, ambientLight, lightColor, newT, newNorm, Kd, Ks, Ka, Od, Os, Kgls);
     }
@@ -109,5 +117,6 @@ private:
     double refractIndex;
     double t;
     vec3 normal;
+    aabb bbox;
     string type = "sphere";
 };

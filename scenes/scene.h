@@ -2,6 +2,7 @@
 
 #include "../sphere.h"
 #include "../polygon.h"
+#include "../hittable_list.h"
 
 class scene {
 public:
@@ -17,7 +18,7 @@ public:
           const vec3 &ambientLight,
           const vec3 &backgroundColor,
 
-          vector<hittable*> &objects)
+          hittable_list &objects)
 
           :
 
@@ -45,7 +46,7 @@ public:
     vec3 ambientLight;
     vec3 backgroundColor;
 
-    vector<hittable*> objects;
+    hittable_list objects;
 };
 
 

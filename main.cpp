@@ -4,15 +4,15 @@
 #include "hittable.h"
 #include "scenes/scene.h"
 #include "utility.h"
+#include "bvh.h"
 
 #include <iostream>
 #include <algorithm>
 #include <fstream>
-#include <random>
 
 using namespace std;
 
-scene scn = penetration();
+scene scn = fushigi();
 
 bool isInShadow = false;
 int maxReflectionDepth = 3;
@@ -20,7 +20,8 @@ int currentReflectionDepth = 0;
 
 // TODO: goals:
 // TODO: - multi sampling DONE
-// TODO: - refraction
+// TODO: - refraction DONE?
+// TODO: - AABB
 // TODO: - obj importing
 // extras:
 // TODO: - texture mapping
@@ -34,6 +35,7 @@ color refraction(vec3 currentNormal, ray r, double currentT, auto object);
 
 color ray_color(const ray& r) {
     auto objects = scn.objects;
+    objects = hittable_list(make_shared<bvh_node>(objects));
 
     double currentT = numeric_limits<double>::infinity();
     vec3 currentNormal;
@@ -48,13 +50,19 @@ color ray_color(const ray& r) {
     color reflectionColor;
     color transmissionColor;
 
-    for (unsigned int i = 0; i < scn.objects.size(); i++) {
+    for (unsigned int i = 0; i < scn.objects.getSize(); i++) {
 
-        auto object= scn.objects.at(i);
+        auto object= scn.objects.getObject(i);
 
-        if (scn.objects[i]->hit(r)) {
+        if (scn.objects.getObject(i)->hit(r)) {
             currentNormal = object->getNormal();
             currentT = object->getT();
+
+            //TODO: redundant code, refactor
+            hit_record rec;
+            rec.normal = currentNormal;
+            rec.t = currentT;
+
             drawObject = true;
             hitObject = true;
         }
@@ -74,7 +82,7 @@ color ray_color(const ray& r) {
         }
     }
 
-    auto object= scn.objects.at(indexMinT);
+    auto object= scn.objects.getObject(indexMinT);
 
     if (drawObject && object->getRefl() == 0 && object->getRefractIndex() == 0 && !r.shadowRay()) {
         shadowColor = shadow(minNormal, minT, r);

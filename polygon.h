@@ -78,6 +78,10 @@ public:
         return false;
     }
 
+    aabb bounding_box() const override {
+        return bbox;
+    }
+
 private:
     vector<vec3> vertices;
     double radius;
@@ -92,6 +96,7 @@ private:
     double t;
     vec3 normal;
     string type = "polygon";
+    aabb bbox;
 
     bool hitPolygon(const ray& r) {
         // get vectors of 2 sides

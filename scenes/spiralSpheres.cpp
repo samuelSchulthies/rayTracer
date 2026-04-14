@@ -30,9 +30,9 @@ scene spiralSpheres(){
         g += 0.05;
         b -= 0.05;
     }
-    vector<hittable*> objects;
+    hittable_list objects;
     for(int i = 0; i < spheres.size(); i++) {
-        objects.push_back(&spheres.at(i));
+        objects.add(make_shared<sphere>(spheres.at(i)));
     }
 
     return scene(1.0,

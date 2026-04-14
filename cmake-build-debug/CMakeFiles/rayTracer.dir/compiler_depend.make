@@ -1026,10 +1026,15 @@ CMakeFiles/rayTracer.dir/main.cpp.o: /Users/samuelschulthies/CLionProjects/cs455
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/aabb.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/bvh.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/color.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable_list.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/interval.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable_list.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h \
@@ -2066,8 +2071,11 @@ CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o: /Users/samuelschulthies/CLionProj
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/aabb.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/color.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable_list.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/interval.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h \
@@ -3101,8 +3109,11 @@ CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o: /Users/samuelschulthies/CLi
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/aabb.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/color.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable_list.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/interval.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h \
@@ -4136,8 +4147,11 @@ CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o: /Users/samuelschulthies/CLion
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/aabb.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/color.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable_list.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/interval.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h \
@@ -5171,8 +5185,11 @@ CMakeFiles/rayTracer.dir/scenes/refraction.cpp.o: /Users/samuelschulthies/CLionP
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/aabb.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/color.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable_list.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/interval.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h \
@@ -6206,8 +6223,11 @@ CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o: /Users/samuelschulthies/CLi
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/aabb.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/color.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable_list.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/interval.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h \
@@ -7241,8 +7261,11 @@ CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o: /Users/samuelschulthies/CLio
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/aabb.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/color.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable_list.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/interval.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h \
@@ -8276,8 +8299,11 @@ CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o: /Users/samuelschulthies/CLionPro
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdarg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stddef.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/aabb.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/color.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable_list.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/interval.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/ray.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h \
@@ -8302,6 +8328,8 @@ CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o: /Users/samuelschulthies/CLionPro
 /Users/samuelschulthies/CLionProjects/cs455/rayTracer/shading.h:
 
 /Users/samuelschulthies/CLionProjects/cs455/rayTracer/polygon.h:
+
+/Users/samuelschulthies/CLionProjects/cs455/rayTracer/aabb.h:
 
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/stdint.h:
 
@@ -9233,6 +9261,8 @@ CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o: /Users/samuelschulthies/CLionPro
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__functional/mem_fun_ref.h:
 
+/Users/samuelschulthies/CLionProjects/cs455/rayTracer/bvh.h:
+
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__functional/binder1st.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__type_traits/is_always_bitcastable.h:
@@ -9759,6 +9789,8 @@ CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o: /Users/samuelschulthies/CLionPro
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__availability:
 
+/Users/samuelschulthies/CLionProjects/cs455/rayTracer/interval.h:
+
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/___wctype.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__type_traits/is_reference.h:
@@ -10030,6 +10062,8 @@ CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o: /Users/samuelschulthies/CLionPro
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__algorithm/pstl_stable_sort.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__algorithm/pstl_rotate_copy.h:
+
+/Users/samuelschulthies/CLionProjects/cs455/rayTracer/hittable_list.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__algorithm/pstl_replace.h:
 
