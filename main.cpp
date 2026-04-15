@@ -52,34 +52,34 @@ color ray_color(const ray& r) {
 
     for (unsigned int i = 0; i < scn.objects.getSize(); i++) {
 
-    auto object= scn.objects.getObject(i);
+        //TODO: redundant code, refactor
+        hit_record rec;
+        rec.normal = currentNormal;
+        rec.t = currentT;
 
-    //TODO: redundant code, refactor
-    hit_record rec;
-    rec.normal = currentNormal;
-    rec.t = currentT;
+        auto object= scn.objects.getObject(i);
 
-    if (scn.objects.getObject(i)->hit(r, interval(0,0), rec)) {
-        currentNormal = object->getNormal();
-        currentT = object->getT();
+        if (scn.objects.getObject(i)->hit(r, interval(0,0), rec)) {
+            currentNormal = object->getNormal();
+            currentT = object->getT();
 
-        drawObject = true;
-        hitObject = true;
-    }
-    else {
-        hitObject = false;
-    }
-    if (hitObject && r.shadowRay()) {
-        isInShadow = true;
-        return color(0.0,0.0,0.0);
-    }
-    if (hitObject && !r.shadowRay()){
-        if (currentT < minT){
-            minT = currentT;
-            minNormal = currentNormal;
-            indexMinT = i;
+            drawObject = true;
+            hitObject = true;
         }
-    }
+        else {
+            hitObject = false;
+        }
+        if (hitObject && r.shadowRay()) {
+            isInShadow = true;
+            return color(0.0,0.0,0.0);
+        }
+        if (hitObject && !r.shadowRay()){
+            if (currentT < minT){
+                minT = currentT;
+                minNormal = currentNormal;
+                indexMinT = i;
+            }
+        }
     }
 
     auto object = scn.objects.getObject(indexMinT);

@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o.d"
   "CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o"
   "CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o.d"
+  "CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o"
+  "CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o.d"
   "rayTracer"
   "rayTracer.pdb"
 )

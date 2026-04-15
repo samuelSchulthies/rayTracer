@@ -16,6 +16,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/spiralSpheres.cpp" "CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o.d"
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/threeSpheres.cpp" "CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o.d"
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/tryforce.cpp" "CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o.d"
+  "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/tinyobjloader/tiny_obj_loader.cpp" "CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

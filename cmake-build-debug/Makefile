@@ -321,6 +321,30 @@ scenes/tryforce.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.s
 .PHONY : scenes/tryforce.cpp.s
 
+tinyobjloader/tiny_obj_loader.o: tinyobjloader/tiny_obj_loader.cpp.o
+.PHONY : tinyobjloader/tiny_obj_loader.o
+
+# target to build an object file
+tinyobjloader/tiny_obj_loader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o
+.PHONY : tinyobjloader/tiny_obj_loader.cpp.o
+
+tinyobjloader/tiny_obj_loader.i: tinyobjloader/tiny_obj_loader.cpp.i
+.PHONY : tinyobjloader/tiny_obj_loader.i
+
+# target to preprocess a source file
+tinyobjloader/tiny_obj_loader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.i
+.PHONY : tinyobjloader/tiny_obj_loader.cpp.i
+
+tinyobjloader/tiny_obj_loader.s: tinyobjloader/tiny_obj_loader.cpp.s
+.PHONY : tinyobjloader/tiny_obj_loader.s
+
+# target to generate assembly for a file
+tinyobjloader/tiny_obj_loader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.s
+.PHONY : tinyobjloader/tiny_obj_loader.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -354,6 +378,9 @@ help:
 	@echo "... scenes/tryforce.o"
 	@echo "... scenes/tryforce.i"
 	@echo "... scenes/tryforce.s"
+	@echo "... tinyobjloader/tiny_obj_loader.o"
+	@echo "... tinyobjloader/tiny_obj_loader.i"
+	@echo "... tinyobjloader/tiny_obj_loader.s"
 .PHONY : help
 
 
