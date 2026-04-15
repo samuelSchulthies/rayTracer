@@ -15,7 +15,8 @@ public:
 class hittable {
 public:
     virtual ~hittable() = default;
-    virtual bool hit(const ray& ray) = 0;
+//    virtual bool hit(const ray& ray) = 0;
+    virtual bool hit(const ray& r, interval ray_t, hit_record& rec) = 0;
 
     virtual aabb bounding_box() const = 0;
 

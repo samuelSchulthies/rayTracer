@@ -66,7 +66,7 @@ public:
         return shading().computePhong(type, r, directionToLight, ambientLight, lightColor, newT, newNorm, Kd, Ks, Ka, Od, Os, Kgls);
     }
 
-    bool hit(const ray& r) override {
+    bool hit(const ray& r, interval ray_t, hit_record& rec) override {
         bool hitPoly = hitPolygon(r);
 
         if (t <= 0) {

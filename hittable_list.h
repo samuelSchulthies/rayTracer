@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class hittable_list {
+class hittable_list : hittable {
 public:
     vector<shared_ptr<hittable>> objects;
 
@@ -31,6 +31,20 @@ public:
     shared_ptr<hittable> getObject(int i){
         return objects.at(i);
     }
+
+    bool hit(const ray& r, interval ray_t, hit_record& rec){
+
+    }
+
+
+    // TODO: refactor to remove this
+    vec3 shade(const ray& ray, vec3 directionToLight, vec3 ambientLight, vec3 lightColor, double t, vec3 newNorm){}
+    double getT(){}
+    vec3 getNormal(){}
+    double getRefl(){}
+    double getRefractIndex(){}
+    string getType(){}
+
 
 private:
     aabb bbox;

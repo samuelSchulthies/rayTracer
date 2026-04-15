@@ -12,7 +12,7 @@
 
 using namespace std;
 
-scene scn = refraction();
+scene scn = penetration();
 
 bool isInShadow = false;
 int maxReflectionDepth = 3;
@@ -52,37 +52,37 @@ color ray_color(const ray& r) {
 
     for (unsigned int i = 0; i < scn.objects.getSize(); i++) {
 
-        auto object= scn.objects.getObject(i);
+    auto object= scn.objects.getObject(i);
 
-        if (scn.objects.getObject(i)->hit(r)) {
-            currentNormal = object->getNormal();
-            currentT = object->getT();
+    //TODO: redundant code, refactor
+    hit_record rec;
+    rec.normal = currentNormal;
+    rec.t = currentT;
 
-            //TODO: redundant code, refactor
-            hit_record rec;
-            rec.normal = currentNormal;
-            rec.t = currentT;
+    if (scn.objects.getObject(i)->hit(r, interval(0,0), rec)) {
+        currentNormal = object->getNormal();
+        currentT = object->getT();
 
-            drawObject = true;
-            hitObject = true;
-        }
-        else {
-            hitObject = false;
-        }
-        if (hitObject && r.shadowRay()) {
-            isInShadow = true;
-            return color(0.0,0.0,0.0);
-        }
-        if (hitObject && !r.shadowRay()){
-            if (currentT < minT){
-                minT = currentT;
-                minNormal = currentNormal;
-                indexMinT = i;
-            }
+        drawObject = true;
+        hitObject = true;
+    }
+    else {
+        hitObject = false;
+    }
+    if (hitObject && r.shadowRay()) {
+        isInShadow = true;
+        return color(0.0,0.0,0.0);
+    }
+    if (hitObject && !r.shadowRay()){
+        if (currentT < minT){
+            minT = currentT;
+            minNormal = currentNormal;
+            indexMinT = i;
         }
     }
+    }
 
-    auto object= scn.objects.getObject(indexMinT);
+    auto object = scn.objects.getObject(indexMinT);
 
     if (drawObject && object->getRefl() == 0 && object->getRefractIndex() == 0 && !r.shadowRay()) {
         shadowColor = shadow(minNormal, minT, r);

@@ -72,7 +72,7 @@ public:
     }
 
 
-    bool hit(const ray& r) override {
+    bool hit(const ray& r, interval ray_t, hit_record& rec) override {
         vec3 rayToSphere = center - r.origin();
         auto a = dot(r.direction(), r.direction());
         auto b = -2.0 * dot(r.direction(), rayToSphere);
