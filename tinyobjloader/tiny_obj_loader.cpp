@@ -11,7 +11,7 @@ using namespace std;
 vector< vector<vec3> > getObj(string file) {
     vector< vector<vec3> > triangles;
 
-    string inputfile = "models/" + file;
+    string inputfile = "../models/" + file;
     tinyobj::ObjReaderConfig reader_config;
     reader_config.mtl_search_path = "models/arwing"; // Path to material files
 

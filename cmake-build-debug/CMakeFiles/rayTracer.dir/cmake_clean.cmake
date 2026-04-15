@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/rayTracer.dir/main.cpp.o"
   "CMakeFiles/rayTracer.dir/main.cpp.o.d"
+  "CMakeFiles/rayTracer.dir/scenes/arwing.cpp.o"
+  "CMakeFiles/rayTracer.dir/scenes/arwing.cpp.o.d"
   "CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o"
   "CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o.d"
   "CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o"
@@ -15,8 +17,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o.d"
   "CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o"
   "CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o.d"
-  "CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o"
-  "CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o.d"
   "rayTracer"
   "rayTracer.pdb"
 )

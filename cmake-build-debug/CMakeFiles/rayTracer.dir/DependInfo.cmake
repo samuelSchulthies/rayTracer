@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/main.cpp" "CMakeFiles/rayTracer.dir/main.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/main.cpp.o.d"
+  "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/arwing.cpp" "CMakeFiles/rayTracer.dir/scenes/arwing.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/arwing.cpp.o.d"
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/fushigi.cpp" "CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/fushigi.cpp.o.d"
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/magentaSphere.cpp" "CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/magentaSphere.cpp.o.d"
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/penetration.cpp" "CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o.d"
@@ -16,7 +17,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/spiralSpheres.cpp" "CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o.d"
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/threeSpheres.cpp" "CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o.d"
   "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/tryforce.cpp" "CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o.d"
-  "/Users/samuelschulthies/CLionProjects/cs455/rayTracer/tinyobjloader/tiny_obj_loader.cpp" "CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o" "gcc" "CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

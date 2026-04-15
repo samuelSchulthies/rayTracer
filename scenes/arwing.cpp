@@ -1,8 +1,8 @@
 #include "scene.h"
 #include "../tinyobjloader/tiny_obj_loader.cpp"
 
-scene arwing(){
-    string file = "arwing/arwing_low.obj";
+scene arwing() {
+    string file = "arwing/arwingLow_adjusted.obj";
 
     vector< vector<vec3> > arwing = getObj(file);
     hittable_list objects;
@@ -14,7 +14,7 @@ scene arwing(){
                 0.9,
                 1.0,
                 0.1,
-                {1.0, 1.0, 0.0},
+                {0.0, 0.0, 1.0},
                 {1.0, 1.0, 1.0},
                 4.0,
                 0.0,

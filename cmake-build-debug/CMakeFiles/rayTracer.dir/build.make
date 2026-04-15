@@ -181,19 +181,19 @@ CMakeFiles/rayTracer.dir/scenes/refraction.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rayTracer.dir/scenes/refraction.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/refraction.cpp -o CMakeFiles/rayTracer.dir/scenes/refraction.cpp.s
 
-CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o: CMakeFiles/rayTracer.dir/flags.make
-CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o: /Users/samuelschulthies/CLionProjects/cs455/rayTracer/tinyobjloader/tiny_obj_loader.cpp
-CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o: CMakeFiles/rayTracer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samuelschulthies/CLionProjects/cs455/rayTracer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o -MF CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o.d -o CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o -c /Users/samuelschulthies/CLionProjects/cs455/rayTracer/tinyobjloader/tiny_obj_loader.cpp
+CMakeFiles/rayTracer.dir/scenes/arwing.cpp.o: CMakeFiles/rayTracer.dir/flags.make
+CMakeFiles/rayTracer.dir/scenes/arwing.cpp.o: /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/arwing.cpp
+CMakeFiles/rayTracer.dir/scenes/arwing.cpp.o: CMakeFiles/rayTracer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samuelschulthies/CLionProjects/cs455/rayTracer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/rayTracer.dir/scenes/arwing.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rayTracer.dir/scenes/arwing.cpp.o -MF CMakeFiles/rayTracer.dir/scenes/arwing.cpp.o.d -o CMakeFiles/rayTracer.dir/scenes/arwing.cpp.o -c /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/arwing.cpp
 
-CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuelschulthies/CLionProjects/cs455/rayTracer/tinyobjloader/tiny_obj_loader.cpp > CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.i
+CMakeFiles/rayTracer.dir/scenes/arwing.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rayTracer.dir/scenes/arwing.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/arwing.cpp > CMakeFiles/rayTracer.dir/scenes/arwing.cpp.i
 
-CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuelschulthies/CLionProjects/cs455/rayTracer/tinyobjloader/tiny_obj_loader.cpp -o CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.s
+CMakeFiles/rayTracer.dir/scenes/arwing.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rayTracer.dir/scenes/arwing.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/arwing.cpp -o CMakeFiles/rayTracer.dir/scenes/arwing.cpp.s
 
 # Object files for target rayTracer
 rayTracer_OBJECTS = \
@@ -205,7 +205,7 @@ rayTracer_OBJECTS = \
 "CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o" \
 "CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o" \
 "CMakeFiles/rayTracer.dir/scenes/refraction.cpp.o" \
-"CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o"
+"CMakeFiles/rayTracer.dir/scenes/arwing.cpp.o"
 
 # External object files for target rayTracer
 rayTracer_EXTERNAL_OBJECTS =
@@ -218,7 +218,7 @@ rayTracer: CMakeFiles/rayTracer.dir/scenes/spiralSpheres.cpp.o
 rayTracer: CMakeFiles/rayTracer.dir/scenes/threeSpheres.cpp.o
 rayTracer: CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.o
 rayTracer: CMakeFiles/rayTracer.dir/scenes/refraction.cpp.o
-rayTracer: CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o
+rayTracer: CMakeFiles/rayTracer.dir/scenes/arwing.cpp.o
 rayTracer: CMakeFiles/rayTracer.dir/build.make
 rayTracer: CMakeFiles/rayTracer.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/samuelschulthies/CLionProjects/cs455/rayTracer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable rayTracer"

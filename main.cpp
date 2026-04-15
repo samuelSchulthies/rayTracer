@@ -12,7 +12,7 @@
 
 using namespace std;
 
-scene scn = penetration();
+scene scn = arwing();
 
 bool isInShadow = false;
 int maxReflectionDepth = 3;

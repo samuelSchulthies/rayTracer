@@ -1,5 +1,5 @@
-CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o: \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/penetration.cpp \
+CMakeFiles/rayTracer.dir/scenes/arwing.cpp.o: \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/arwing.cpp \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/scene.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../sphere.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../vec3.h \
@@ -1035,4 +1035,23 @@ CMakeFiles/rayTracer.dir/scenes/penetration.cpp.o: \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../interval.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../shading.h \
   /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../polygon.h \
-  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../hittable_list.h
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../hittable_list.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../tinyobjloader/tiny_obj_loader.cpp \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../tinyobjloader/tiny_obj_loader.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/map \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__tree \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/cassert \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/assert.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/_assert.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/_static_assert.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/set \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/sstream \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/cfloat \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/float.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/float.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/float.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/emmintrin.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/xmmintrin.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/mmintrin.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include/mm_malloc.h \
+  /Users/samuelschulthies/CLionProjects/cs455/rayTracer/scenes/../tinyobjloader/../vec3.h

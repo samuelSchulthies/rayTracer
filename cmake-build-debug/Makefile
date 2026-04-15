@@ -153,6 +153,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+scenes/arwing.o: scenes/arwing.cpp.o
+.PHONY : scenes/arwing.o
+
+# target to build an object file
+scenes/arwing.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/arwing.cpp.o
+.PHONY : scenes/arwing.cpp.o
+
+scenes/arwing.i: scenes/arwing.cpp.i
+.PHONY : scenes/arwing.i
+
+# target to preprocess a source file
+scenes/arwing.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/arwing.cpp.i
+.PHONY : scenes/arwing.cpp.i
+
+scenes/arwing.s: scenes/arwing.cpp.s
+.PHONY : scenes/arwing.s
+
+# target to generate assembly for a file
+scenes/arwing.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/arwing.cpp.s
+.PHONY : scenes/arwing.cpp.s
+
 scenes/fushigi.o: scenes/fushigi.cpp.o
 .PHONY : scenes/fushigi.o
 
@@ -321,30 +345,6 @@ scenes/tryforce.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/scenes/tryforce.cpp.s
 .PHONY : scenes/tryforce.cpp.s
 
-tinyobjloader/tiny_obj_loader.o: tinyobjloader/tiny_obj_loader.cpp.o
-.PHONY : tinyobjloader/tiny_obj_loader.o
-
-# target to build an object file
-tinyobjloader/tiny_obj_loader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.o
-.PHONY : tinyobjloader/tiny_obj_loader.cpp.o
-
-tinyobjloader/tiny_obj_loader.i: tinyobjloader/tiny_obj_loader.cpp.i
-.PHONY : tinyobjloader/tiny_obj_loader.i
-
-# target to preprocess a source file
-tinyobjloader/tiny_obj_loader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.i
-.PHONY : tinyobjloader/tiny_obj_loader.cpp.i
-
-tinyobjloader/tiny_obj_loader.s: tinyobjloader/tiny_obj_loader.cpp.s
-.PHONY : tinyobjloader/tiny_obj_loader.s
-
-# target to generate assembly for a file
-tinyobjloader/tiny_obj_loader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/rayTracer.dir/build.make CMakeFiles/rayTracer.dir/tinyobjloader/tiny_obj_loader.cpp.s
-.PHONY : tinyobjloader/tiny_obj_loader.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -357,6 +357,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... scenes/arwing.o"
+	@echo "... scenes/arwing.i"
+	@echo "... scenes/arwing.s"
 	@echo "... scenes/fushigi.o"
 	@echo "... scenes/fushigi.i"
 	@echo "... scenes/fushigi.s"
@@ -378,9 +381,6 @@ help:
 	@echo "... scenes/tryforce.o"
 	@echo "... scenes/tryforce.i"
 	@echo "... scenes/tryforce.s"
-	@echo "... tinyobjloader/tiny_obj_loader.o"
-	@echo "... tinyobjloader/tiny_obj_loader.i"
-	@echo "... tinyobjloader/tiny_obj_loader.s"
 .PHONY : help
 
 

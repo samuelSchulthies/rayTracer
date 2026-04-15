@@ -3,7 +3,6 @@
 #include "../sphere.h"
 #include "../polygon.h"
 #include "../hittable_list.h"
-#include "../tinyobjloader/tiny_obj_loader.h"
 
 class scene {
 public:
